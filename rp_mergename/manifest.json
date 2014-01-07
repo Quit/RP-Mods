@@ -1,0 +1,10 @@
+{
+	"info" : {
+		"name" : "Merges names to create quite odd things."
+	},
+	
+	"rp" : {
+		"server_init" : "mergename.lua"
+	}
+}
+	

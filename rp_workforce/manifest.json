@@ -1,0 +1,18 @@
+{
+	"info" : {
+		"name" : "Workforce. Uses bagels to create... workers."
+	},
+	 
+	"radiant" : {
+		"functions" : {
+			"summon_worker" : {
+				"controller": "file(call_handlers/summon_worker_handler.lua)",
+				"endpoint" : "server"
+			}
+		}
+	},
+	
+	"rp" : {
+		"server_init" : "server_init.lua"
+	}
+}

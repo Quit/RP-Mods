@@ -1,0 +1,13 @@
+{
+   "type" : "command",
+
+   "name": "summon_worker",
+   "tooltip": "Summon Worker",
+   "icon": "file(summon_worker.png)",
+
+   "action": "call",
+   "function": "rp_workforce:summon_worker",
+   "args": [
+      "{{self}}"
+   ]
+}

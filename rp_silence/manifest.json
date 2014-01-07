@@ -1,0 +1,18 @@
+{
+	"info" : {
+		"name" : "Silence",
+		"description": "Because after starting the game 30 times an hour, you simply cannot stand the music anymore."
+	},
+
+	"radiant" : {
+		"entities" : {
+			"music:silence" : "file(soundofsilence.ogg)"
+		}
+	},
+	
+	"ui" : {
+		"js" : [
+			"file(silence.js)"
+		]
+	}
+}

@@ -1,0 +1,7 @@
+{
+	"name" : "[MOD] Sized People",
+	
+	"rp" : {
+		"server_init" : "x_sized_people.lua"
+	}
+}

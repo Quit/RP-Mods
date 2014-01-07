@@ -1,0 +1,7 @@
+{
+	"name" : "[MOD] Test World",
+	
+	"rp" : {
+		"server_init" : "x_test_world.lua"
+	}
+}

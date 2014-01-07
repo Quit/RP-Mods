@@ -1,0 +1,10 @@
+{
+	"info" : {
+		"name" : "Lucky Worker",
+		"descriptions" : "Sometimes, running away with a few others to found a new village isn't a bad idea at all..."
+	},
+	
+	"rp" : {
+		"server_init" : "lucky_worker.lua"
+	}
+}
