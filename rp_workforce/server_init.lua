@@ -23,7 +23,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ]]
 
-print('Loading workforce.')
 -- Hook the default standard
 rp.add_entity_created_hook('stonehearth:camp_standard', function(self)
 	-- And add our little command.
