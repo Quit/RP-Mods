@@ -1,6 +1,7 @@
 {
 	"disabled_mods" : [
 		"rp_extensive_logging",
-		"rp_mergename"
+		"rp_mergename",
+		"rp_lucky_worker"
 	]
 }
