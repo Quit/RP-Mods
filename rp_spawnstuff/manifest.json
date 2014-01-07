@@ -1,0 +1,18 @@
+{
+	"info" : {
+		"name" : "Spawn Stuff"
+	},
+	
+	"radiant" : {
+		"functions" : {
+			"spawn_stuff" : {
+				"controller": "file(callback.lua)",
+				"endpoint" : "server"
+			}
+		}
+	},
+	
+	"rp" : {
+		"server_init" : "server_init.lua"
+	}
+}
