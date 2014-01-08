@@ -1,0 +1,161 @@
+{
+	"faction_name" : "Ascendies",
+	"male_entities" : [
+		"stonehearth:male_1",
+		"stonehearth:male_1",
+		"stonehearth:male_2",
+		"stonehearth:male_3"
+	],
+	"female_entities" : [
+		"stonehearth:female_1",
+		"stonehearth:female_2",
+		"stonehearth:female_3"
+	],
+	
+	"given_names" : {
+		"male" : [
+			{
+				"chance" : 0,
+				"list" : [
+					" ",
+				]
+			},
+			{
+				"list" : [
+				 "Dai",
+				 "Gen",
+				 "Hiro",
+				 "Ichi",
+				 "Ji",
+				 "Jun",
+				 "Kazu",
+				 "Kei",
+				 "Ken",
+				 "Mitsu",
+				 "Nobu",
+				 "Shin"
+				]
+			},
+			{
+				"list" : [
+				 "haru",
+				 "hachi"
+				 "hide",
+				 "hiro",
+				 "ichi",
+				 "naga",
+				 "masa",
+				 "ro",
+				 "mon",
+				 "suke",
+				 "sumi",
+				 "ta",
+				 "taro"
+				 "to",
+				 "ya",
+				]
+			}
+		],
+		
+		"female" : [
+			{
+				"chance" : 0,
+				"list" : [
+					" ",
+				]
+			},
+			{
+				"list" : [
+				 "A",
+				 "Ae",
+				 "Ai";
+				 "Ao",
+				 "Aki",
+				 "Fuu",
+				 "Fuyu",
+				 "Hana",
+				 "Hibi",
+				 "Haru",
+				 "Iro",
+				 "Kana";
+				 "Kei",
+				 "Ma",
+				 "Mi",
+				 "Mido",
+				 "Rei",
+				 "Sana",
+				 "You",
+				 "Yu"
+				]
+			},
+			
+			{
+				"list" : [
+				 "e",
+				 "ha",
+				 "hi",
+				 "i",
+				 "ka",
+				 "hi",
+				 "ko",
+				 "mi",
+				 "mu",
+				 "na",
+				 "na",
+				 "ra",
+				 "ri",
+				 "ya"
+				]
+			}
+		]
+	},
+	
+	"surnames" : {
+		"_default" : [
+			{
+				"list": [
+					"Aki",
+					"An",
+					"E",
+					"Fu",
+					"Fuji",
+					"Hi",
+					"I"
+					"Ishi",
+					"Ino",
+					"Kino",
+					"Ku",
+					"Naka",
+					"O",
+					"Sa",
+					"Saka",
+					"Su",
+					"Taka",
+					"Yama"
+				]
+			},
+			{
+				"list" : [
+					"da",
+					"ga",
+					"hashi",
+					"kawa",
+					"moto",
+					"mura",
+					"nashi",
+					"to",
+					"saki",
+					"shita",
+					"ue",
+					"zuki"
+				]
+			},
+			{
+				"chance" : 0,
+				"list" : [
+					" ",
+				]
+			}
+		]
+	}
+}
