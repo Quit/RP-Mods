@@ -1,0 +1,272 @@
+{
+	"faction_name" : "Ascendies",
+	"male_entities" : [
+		"stonehearth:male_1",
+		"stonehearth:male_1",
+		"stonehearth:male_2",
+		"stonehearth:male_3"
+	],
+	"female_entities" : [
+		"stonehearth:female_1",
+		"stonehearth:female_2",
+		"stonehearth:female_3"
+	],
+	
+	"given_names" : {
+		"male" : [
+			{
+				"chance" : 1,
+				"list" : [
+					"Duke ",
+					"Count "
+				]
+			},
+			{
+				"list" : [
+				 "Abel",
+				 "Ad",
+				 "Ag",
+				 "Ala",
+				 "And",
+				 "An",
+				 "Ar",
+				 "Ax",
+				 "Bald",
+				 "Bar",
+				 "Bert",
+				 "Brom",
+				 "Bru",
+				 "Cal",
+				 "Camp",
+				 "Cas",
+				 "Chop",
+				 "Cor",
+				 "Da",
+				 "Dek",
+				 "Di",
+				 "Dol",
+				 "Eb",
+				 "Eck",
+				 "Ed",
+				 "Ehr",
+				 "Eo",
+				 "Eug",
+				 "Fab",
+				 "Fel",
+				 "Ferd",
+				 "Fos",
+				 "Fried",
+				 "Gar",
+				 "Ger",
+				 "Gor",
+				 "Gre",
+				 "Gun",
+				 "Har",
+				 "Hau",
+				 "Hel",
+				 "Her",
+				 "Hu",
+				 "Ig",
+				 "Illo",
+				 "Ing",
+				 "Ir",
+				 "Jan",
+				 "Jo",
+				 "Kas",
+				 "Kle",
+				 "Lan",
+				 "Lie",
+				 "Lin",
+				 "Luc",
+				 "Luth",
+				 "Mad",
+				 "Mag",
+				 "Mir",
+				 "Mot",
+				 "Na",
+				 "Nic",
+				 "Nol",
+				 "Od",
+				 "Olb",
+				 "Or",
+				 "Os",
+				 "Pan",
+				 "Pau",
+				 "Pe",
+				 "Pro",
+				 "Ramb",
+				 "Ran",
+				 "Rein",
+				 "Reu",
+				 "Ri",
+				 "Rud",
+				 "Sa",
+				 "Se",
+				 "Sie",
+				 "Sig",
+				 "Stef",
+				 "Tank",
+				 "Tom",
+				 "Tru",
+				 "Ul",
+				 "Ulf",
+				 "Var",
+				 "Vic",
+				 "Vil",
+				 "Volk",
+				 "Wal",
+				 "Wer",
+				 "Wil",
+				 "Wolf",
+				 "Xav",
+				 "Ze"
+				]
+			},
+			{
+				"list" : [
+				 "an",
+				 "asm",
+				 "av",
+				 "ban",
+				 "ber",
+				 "bert",
+				 "brand",
+				 "cus",
+				 "ei",
+				 "el",
+				 "eth",
+				 "ff",
+				 "go",
+				 "ian",
+				 "ier",
+				 "kil",
+				 "ko",
+				 "lad",
+				 "mar",
+				 "mund",
+				 "mut",
+				 "nad",
+				 "ner",
+				 "nus",
+				 "o",
+				 "old",
+				 "or",
+				 "per",
+				 "rad",
+				 "red",
+				 "ric",
+				 "rick",
+				 "tar",
+				 "ton",
+				 "toph",
+				 "tor",
+				 "us",
+				 "ving",
+				 "wald",
+				 "wulf",
+				 "wyn",
+				 "xim"
+				]
+			}
+		],
+		
+		"female" : [
+			{
+				"chance" : 1,
+				"list" : [
+					"Duchess ",
+					"Countess "
+				]
+			},
+			{
+				"list" : [
+				 "Dar",
+				 "Ala",
+				 "Ab",
+				 "Scarl",
+				 "El",
+				 "L",
+				 "Sen",
+				 "Rav",
+				 "Vi",
+				 "Jes",
+				 "Mari"
+				]
+			},
+			
+			{
+				"list" : [
+				 "a",
+				 "ina",
+				 "i",
+				 "ett",
+				 "ena",
+				 "eah",
+				 "en",
+				 "o",
+				 "anne"
+				]
+			}
+		]
+	},
+	
+	"surnames" : {
+		"_default" : [
+			{
+				"list": [
+					"Burly",
+					"Farst",
+					"Gwar",
+					"Bol",
+					"Frey",
+					"Car",
+					"Ed",
+					"No",
+					"Ke",
+					"Bright",
+					"North",
+					"Ber",
+					"Carl",
+					"Fram",
+					"Hunter",
+					"Win",
+					"Jon",
+					"Ba"
+				]
+			},
+			{
+				"list" : [
+					"hands",
+					"rider",
+					"in",
+					"toose",
+					"wind",
+					"vad",
+					"essa",
+					"nac",
+					"loch",
+					"well",
+					"point",
+					"all",
+					"wine",
+					"er",
+					"ton",
+					"set",
+					"dal",
+					"ub"
+				]
+			},
+			{
+				"chance" : 1,
+				"list" : [
+					", Dark Lord of All",
+					" of Stonington",
+					" Sr.",
+					" Jr.",
+					" II",
+					" III",
+				]
+			}
+		]
+	}
+}
