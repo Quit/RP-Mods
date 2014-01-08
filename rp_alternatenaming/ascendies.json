@@ -57,6 +57,7 @@
 				 "Fos",
 				 "Fried",
 				 "Gar",
+				 "Geo",
 				 "Ger",
 				 "Gor",
 				 "Gre",
@@ -135,6 +136,8 @@
 				 "ei",
 				 "el",
 				 "eth",
+				 "fan",
+				 "fe",
 				 "ff",
 				 "go",
 				 "ian",
@@ -214,6 +217,7 @@
 		"_default" : [
 			{
 				"list": [
+					"Ad",
 					"Burly",
 					"Farst",
 					"Gwar",
@@ -236,6 +240,7 @@
 			},
 			{
 				"list" : [
+					"amo",
 					"hands",
 					"rider",
 					"in",
