@@ -1,0 +1,81 @@
+{
+	"faction_name" : "Ascendies",
+	"male_entities" : [
+		"stonehearth:male_1",
+		"stonehearth:male_1",
+		"stonehearth:male_2",
+		"stonehearth:male_3"
+	],
+	"female_entities" : [
+		"stonehearth:female_1",
+		"stonehearth:female_2",
+		"stonehearth:female_3"
+	],
+	
+	"given_names" : {
+		"male" : [
+			{
+				"chance" : 0,
+				"list" : [
+					"Duke ",
+					"Count "
+				]
+			},
+			{
+				"list" : [
+				 "Mitsu",
+				 "Nobu"
+				]
+			},
+			{
+				"list" : [
+				 "haru",
+				 "naga",
+				 "masa"
+				]
+			}
+		],
+		
+		"female" : [
+			{
+				"chance" : 0,
+				"list" : [
+					" ",
+				]
+			},
+			{
+				"list" : [
+				 "A",
+				]
+			},
+			
+			{
+				"list" : [
+				 "ka",
+				 "ko"
+				]
+			}
+		]
+	},
+	
+	"surnames" : {
+		"_default" : [
+			{
+				"list": [
+					"O",
+				]
+			},
+			{
+				"list" : [
+					"da",
+				]
+			},
+			{
+				"chance" : 0,
+				"list" : [
+					" ",
+				]
+			}
+		]
+	}
+}
