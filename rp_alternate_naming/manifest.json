@@ -12,7 +12,6 @@
 	
 	"rp" : {
 		"server_init" : "alternate_naming.lua",
-		"before" : "rp_lucky_worker",
 		"conflicts" : "rp_mergename"
 	}
 }

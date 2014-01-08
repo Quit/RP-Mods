@@ -1,10 +1,11 @@
 {
 	"info" : {
 		"name" : "Lucky Worker",
-		"descriptions" : "Sometimes, running away with a few others to found a new village isn't a bad idea at all..."
+		"description" : "Sometimes, running away with a few others to found a new village isn't a bad idea at all..."
 	},
 	
 	"rp" : {
-		"server_init" : "lucky_worker.lua"
+		"server_init" : "lucky_worker.lua",
+		"requests" : "rp_proxy_factions"
 	}
 }
