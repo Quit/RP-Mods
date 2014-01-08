@@ -1,0 +1,8 @@
+{
+	"factions" : [
+		{
+			"faction_name" : "civ",
+			"kingdom" : "rp_alternatenaming:factions:ascendies"
+		}
+	]
+}

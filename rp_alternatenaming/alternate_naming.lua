@@ -1,23 +1,34 @@
-local population = api.population
-local faction = population:get_faction("civ", "rp_alternatenaming:factions:ascendies")
+--[=============================================================================[
+The MIT License (MIT)
 
--- Step 1: Patch population.
-do
-	local old_get_faction = population.get_faction
-	
-	function population:get_faction(faction, kingdom)
-		-- If the original ascendancy has been requested
-		if kingdom == 'stonehearth:factions:ascendancy' then
-			-- then long live the king.
-			kingdom = 'rp_alternatenaming:factions:ascendies'
-		end
-		
-		return old_get_faction(self, faction, kingdom)
-	end
-	-- (I should probably add some sort of rp hook for that..?)
-end
+Copyright (c) 2014 RepeatPan
+excluding parts that were written by Radiant Entertainment.
 
---Step 2: Modify our faction so ascendies behave a little bit different.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+]=============================================================================]
+
+-- Config, config config config!
+local CONFIG = {
+	factions = {} -- factions affected by this little hack
+}
+
+local _, CONFIG = rp.load_config('config/alternate_naming.json', CONFIG)
 
 -- Returns a random element from a table.
 local function get_random_element(tbl)
@@ -28,7 +39,7 @@ local function get_random_element(tbl)
 end
 
 -- Returns a random name from a list by trying some educated guesses.
-function faction:get_random_name_from_list(list)
+local function get_random_name_from_list(list)
 --~ 	PrintTable(list)
 	-- Asser that our list isn't empty.
 	assert(#list > 0, "get_random_name_from_list cannot operate on an empty list")
@@ -59,8 +70,35 @@ function faction:get_random_name_from_list(list)
 		return get_random_element(list)
 	end
 end
-
-function faction:generate_random_name(gender)
-	local data = self._data
-	return self:get_random_name_from_list(data.given_names[gender] or data.given_names._default) .. ' ' .. self:get_random_name_from_list(data.surnames[gender] or data.surnames._default)
+	
+--~ local faction = population:get_faction("civ", "stonehearth:factions:ascendancy")
+-- Patches "faction"
+function rp.enable_alternate_name_generator(faction)
+	function faction:generate_random_name(gender)
+		local data = self._data
+		return get_random_name_from_list(data.given_names[gender] or data.given_names._default) .. ' ' .. get_random_name_from_list(data.surnames[gender] or data.surnames._default)
+	end
 end
+
+local population = api.population
+-- Now, magic.
+for k, entry in pairs(CONFIG.factions) do
+	-- God I wish I had continue
+	if type(entry) ~= 'table' then
+		rp.log('[ERROR] Only objects are allowed inside CONFIG.factions')
+	else
+		local factionName, kingdom = entry.faction_name, entry.kingdom
+		if not factionName or not kingdom then
+			rp.log('[ERROR] Invalid faction entry')
+		else
+			local success, faction = rp.run_safe(population.get_faction, population, factionName, kingdom)
+			if not success then
+				rp.logf('[ERROR] Cannot find faction %q %q (%s)', tostring(factionName), tostring(kingdom), tostring(faction))
+			else
+				rp.enable_alternate_name_generator(faction)
+				rp.logf('Successfully patched %q %q', tostring(factionName), tostring(kingdom))
+			end
+		end
+	end
+end
+return true

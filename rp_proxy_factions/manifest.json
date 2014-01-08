@@ -1,0 +1,9 @@
+{
+	"info" : {
+		"name" : "Proxy Factions"
+	},
+	
+	"rp" : {
+		"server_init" : "proxy_factions.lua"
+	}
+}

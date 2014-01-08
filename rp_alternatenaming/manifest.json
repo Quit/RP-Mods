@@ -5,7 +5,8 @@
 	
 	"radiant" : {
 		"entities" : {
-			"factions:ascendies" : "file(ascendies.json)"
+			"factions:ascendies" : "file(ascendies.json)",
+			"factions:nihonjin" : "file(nihonjin.json)"
 		}
 	},
 	
