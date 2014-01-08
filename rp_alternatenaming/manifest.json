@@ -1,0 +1,15 @@
+{
+	"info" : {
+		"name" : "Alternate Naming"
+	},
+	
+	"radiant" : {
+		"entities" : {
+			"factions:ascendies" : "file(ascendies.json)"
+		}
+	},
+	
+	"rp" : {
+		"server_init" : "alternate_naming.lua"
+	}
+}

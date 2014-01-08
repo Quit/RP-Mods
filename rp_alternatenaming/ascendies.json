@@ -1,0 +1,151 @@
+{
+	"faction_name" : "Ascendies",
+	"male_entities" : [
+		"stonehearth:male_1",
+		"stonehearth:male_1",
+		"stonehearth:male_2",
+		"stonehearth:male_3"
+	],
+	"female_entities" : [
+		"stonehearth:female_1",
+		"stonehearth:female_2",
+		"stonehearth:female_3"
+	],
+	
+	"given_names" : {
+		"male" : [
+			{
+				"chance" : 1,
+				"list" : [
+					"Duke ",
+					"Count "
+				]
+			},
+			{
+				"list" : [
+         "Camp",
+         "Brom",
+         "Illo",
+         "Se",
+         "Gar",
+         "Nol",
+         "Pan",
+         "Da",
+         "Wil",
+         "Ir",
+         "Chop"
+				]
+			},
+			{
+				"list" : [
+         "ton",
+         "wyn",
+         "an",
+         "eth",
+         "tor",
+         "ff",
+         "lad",
+         "ving",
+         "per"
+				]
+			}
+		],
+		
+		"female" : [
+			{
+				"chance" : 1,
+				"list" : [
+					"Duchess ",
+					"Countess "
+				]
+			},
+		  {
+		    "list" : [
+         "Dar",
+         "Ala",
+         "Ab",
+         "Scarl",
+         "El",
+         "L",
+         "Sen",
+         "Rav",
+         "Vi",
+         "Jes",
+         "Mari"
+		    ]
+		  },
+		  
+		  {
+		    "list" : [
+         "a",
+         "ina",
+         "i",
+         "ett",
+         "ena",
+         "eah",
+         "en",
+         "o",
+         "anne"
+		    ]
+	    }
+		]
+	},
+	
+	"surnames" : {
+	  "_default" : [
+	    {
+	      "list": [
+	        "Burly",
+	        "Farst",
+	        "Gwar",
+	        "Bol",
+	        "Frey",
+	        "Car",
+	        "Ed",
+	        "No",
+	        "Ke",
+	        "Bright",
+	        "North",
+	        "Ber",
+	        "Carl",
+	        "Fram",
+	        "Hunter",
+	        "Win",
+	        "Jon",
+	        "Ba"
+        ]
+	    },
+	    {
+	      "list" : [
+          "hands",
+          "rider",
+          "in",
+          "toose",
+          "wind",
+          "vad",
+          "essa",
+          "nac",
+          "loch",
+          "well",
+          "point",
+          "all",
+          "wine",
+          "er",
+          "ton",
+          "set",
+          "dal",
+          "ub"
+        ]
+	    },
+			{
+				"chance" : 1,
+				"list" : [
+					", Dark Lord of All",
+					" of Stonington",
+					" Sr.",
+					" Jr."
+				]
+			}
+    ]
+	}
+}
