@@ -1,7 +1,7 @@
 {
 	"replacements" : {
 		"civ" : {
-			"kingdom" : "rp_alternatenaming:factions:ascendies"
+			"kingdom" : "rp_alternate_naming:factions:ascendies"
 		}
 	}
 }

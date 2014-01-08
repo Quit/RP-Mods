@@ -1,8 +1,8 @@
 local population = api.population
 
 local CONFIG = { 
-	replacements = {  -- faction_name => { faction = "another faction name, or the same", kingdom = "another kingdom name, or the same" } } replacement file/kingdom... whatever :X
---~ 		["civ"] = "rp_alternatenaming:factions:ascendies" 
+	replacements = {  -- faction_name => { faction_name = "another faction name, or the same", kingdom = "another kingdom name, or the same" } } replacement file/kingdom... whatever :X
+--~ 		["civ"] = { kingdom = "rp_alternatenaming:factions:ascendies" }
 	}
 }
 
