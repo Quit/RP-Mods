@@ -64,8 +64,3 @@ function faction:generate_random_name(gender)
 	local data = self._data
 	return self:get_random_name_from_list(data.given_names[gender] or data.given_names._default) .. ' ' .. self:get_random_name_from_list(data.surnames[gender] or data.surnames._default)
 end
-
-
-for i = 1, 1000 do
-	print(faction:generate_random_name(math.random(2) == 1 and 'male' or 'female'))
-end
