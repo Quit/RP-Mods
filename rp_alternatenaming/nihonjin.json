@@ -17,21 +17,42 @@
 			{
 				"chance" : 0,
 				"list" : [
-					"Duke ",
-					"Count "
+					" ",
 				]
 			},
 			{
 				"list" : [
+				 "Dai",
+				 "Gen",
+				 "Hiro",
+				 "Ichi",
+				 "Ji",
+				 "Jun",
+				 "Kazu",
+				 "Kei",
+				 "Ken",
 				 "Mitsu",
-				 "Nobu"
+				 "Nobu",
+				 "Shin"
 				]
 			},
 			{
 				"list" : [
 				 "haru",
+				 "hachi"
+				 "hide",
+				 "hiro",
+				 "ichi",
 				 "naga",
-				 "masa"
+				 "masa",
+				 "ro",
+				 "mon",
+				 "suke",
+				 "sumi",
+				 "ta",
+				 "taro"
+				 "to",
+				 "ya",
 				]
 			}
 		],
@@ -46,13 +67,33 @@
 			{
 				"list" : [
 				 "A",
+				 "Ae",
+				 "Ao",
+				 "Aki",
+				 "Fuyu",
+				 "Hana",
+				 "Haru",
+				 "Iro",
+				 "Kei",
+				 "Ma",
+				 "Rei",
+				 "Sana",
+				 "You",
+				 "Yu"
 				]
 			},
 			
 			{
 				"list" : [
+				 "e",
+				 "ha",
+				 "i",
 				 "ka",
-				 "ko"
+				 "ko",
+				 "mi",
+				 "mu",
+				 "na",
+				 "ya"
 				]
 			}
 		]
@@ -62,12 +103,38 @@
 		"_default" : [
 			{
 				"list": [
+					"An",
+					"E",
+					"Fu",
+					"Fuji",
+					"Hi",
+					"I"
+					"Ishi",
+					"Ino",
+					"Kino",
+					"Ku",
+					"Naka",
 					"O",
+					"Sa",
+					"Saka",
+					"Su",
+					"Taka",
+					"Yama"
 				]
 			},
 			{
 				"list" : [
 					"da",
+					"ga",
+					"hashi",
+					"kawa",
+					"moto",
+					"mura",
+					"to",
+					"saki",
+					"shita",
+					"ue",
+					"zuki"
 				]
 			},
 			{
