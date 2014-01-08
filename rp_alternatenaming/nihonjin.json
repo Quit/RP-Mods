@@ -68,14 +68,20 @@
 				"list" : [
 				 "A",
 				 "Ae",
+				 "Ai";
 				 "Ao",
 				 "Aki",
+				 "Fuu",
 				 "Fuyu",
 				 "Hana",
+				 "Hibi",
 				 "Haru",
 				 "Iro",
+				 "Kana";
 				 "Kei",
 				 "Ma",
+				 "Mi",
+				 "Mido",
 				 "Rei",
 				 "Sana",
 				 "You",
@@ -87,12 +93,17 @@
 				"list" : [
 				 "e",
 				 "ha",
+				 "hi",
 				 "i",
 				 "ka",
+				 "hi",
 				 "ko",
 				 "mi",
 				 "mu",
 				 "na",
+				 "na",
+				 "ra",
+				 "ri",
 				 "ya"
 				]
 			}
@@ -103,6 +114,7 @@
 		"_default" : [
 			{
 				"list": [
+					"Aki",
 					"An",
 					"E",
 					"Fu",
@@ -130,6 +142,7 @@
 					"kawa",
 					"moto",
 					"mura",
+					"nashi",
 					"to",
 					"saki",
 					"shita",
