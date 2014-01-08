@@ -27,3 +27,5 @@ function faction:generate_random_name(gender)
 --~ 		return getRandom(names.first_name_1) .. getRandom(names.first_name_2) .. ' ' .. getRandom(surnames.first_part) .. getRandom(surnames.last_part)
 	return getRandomName(names) .. ' ' .. getRandomName(surnames)
 end
+
+return true

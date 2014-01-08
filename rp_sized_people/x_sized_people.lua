@@ -58,3 +58,5 @@ for i = 1, 3 do
 		rp.add_entity_created_hook('stonehearth:' .. gender .. '_' .. i, setSize, gender, i)
 	end
 end
+
+return true

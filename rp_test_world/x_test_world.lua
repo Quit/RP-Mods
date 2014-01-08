@@ -11,3 +11,5 @@ if WG._create_test_blueprint then
 else
 	error('_create_test_blueprint does no longer exist?')
 end
+
+return true

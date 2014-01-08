@@ -121,3 +121,5 @@ local function addItems(standard)
 end
 
 rp.add_entity_created_hook('stonehearth:camp_standard', addItems)
+
+return true
