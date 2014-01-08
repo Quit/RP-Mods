@@ -1,0 +1,10 @@
+{
+	"info" : {
+		"name" : "Time is money!",
+		"description": "Loading screens and tutorials are for BEGINNERS"
+	},
+	
+	"ui" : {
+		"js" : [ "file(tim.js)" ]
+	}
+}
