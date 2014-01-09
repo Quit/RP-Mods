@@ -28,7 +28,7 @@ local CONFIG = {
 	factions = {} -- factions affected by this little hack
 }
 
-local _, CONFIG = rp.load_config('config/alternate_naming.json', CONFIG)
+CONFIG = rp.load_config('config/alternate_naming.json', CONFIG)
 
 -- Returns a random element from a table.
 local function get_random_element(tbl)

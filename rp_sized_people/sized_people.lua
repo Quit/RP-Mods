@@ -14,8 +14,7 @@ local SIZES =
 	}
 }
 
-local _
-_, SIZES = rp.load_config('config/sized_people.json', SIZES)
+SIZES = rp.load_config('config/sized_people.json', SIZES)
 
 -- Function that re-sizes an entity.
 local function set_size(ent, ent_name)
