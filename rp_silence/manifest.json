@@ -14,5 +14,9 @@
 		"js" : [
 			"file(silence.js)"
 		]
+	},
+	
+	"rp" : {
+		"required_version" : 1401
 	}
 }

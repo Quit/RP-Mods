@@ -1,6 +1,7 @@
 {
 	"info" : {
-		"name" : "Workforce. Uses bagels to create... workers."
+		"name" : "Workforce. Uses bagels to create... workers.",
+		"description" : "Adds a button to the camp standard that allows spawning in of new workers."
 	},
 	 
 	"radiant" : {
@@ -13,6 +14,7 @@
 	},
 	
 	"rp" : {
-		"server_init" : "server_init.lua"
+		"server_init" : "server_init.lua",
+		"required_version" : 1401
 	}
 }

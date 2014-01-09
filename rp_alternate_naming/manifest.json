@@ -1,6 +1,7 @@
 {
 	"info" : {
-		"name" : "Alternate Naming"
+		"name" : "Alternate Naming",
+		"description" : "Introduces a different name generator that combines names instead of getting them from a fixed list."
 	},
 	
 	"radiant" : {
@@ -12,6 +13,7 @@
 	
 	"rp" : {
 		"server_init" : "alternate_naming.lua",
-		"conflicts" : "rp_merge_names"
+		"conflicts" : "rp_merge_names",
+		"required_version" : 1401
 	}
 }

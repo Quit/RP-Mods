@@ -1,10 +1,12 @@
 {
 	"info" : {
-		"name" : "Merges names to create quite odd things."
+		"name" : "Merges names to create quite odd things.",
+		"description" : "Modifies the name generator to create absurd long names. Each first and surname will consist of two individual first/surnames."
 	},
 	
 	"rp" : {
-		"server_init" : "merge_names.lua"
+		"server_init" : "merge_names.lua",
+		"required_version" : 1401
 	}
 }
 	

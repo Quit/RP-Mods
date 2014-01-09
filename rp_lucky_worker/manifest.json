@@ -6,6 +6,7 @@
 	
 	"rp" : {
 		"server_init" : "lucky_worker.lua",
-		"requests" : "rp_proxy_factions"
+		"requests" : "rp_proxy_factions",
+		"required_version" : 1401
 	}
 }

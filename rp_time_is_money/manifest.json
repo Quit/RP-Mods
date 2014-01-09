@@ -6,5 +6,9 @@
 	
 	"ui" : {
 		"js" : [ "file(tim.js)" ]
+	},
+	
+	"rp" : {
+		"required_version" : 1401
 	}
 }

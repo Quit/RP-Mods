@@ -1,7 +1,11 @@
 {
-	"name" : "[MOD] Sized People",
+	"info" : {
+		"name" : "Sized People",
+		"description" : "Individually scales each worker to give the game a bit more variation."
+	},
 	
 	"rp" : {
-		"server_init" : "x_sized_people.lua"
+		"server_init" : "sized_people.lua",
+		"required_version" : 1401
 	}
 }

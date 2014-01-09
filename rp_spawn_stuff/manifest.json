@@ -1,6 +1,7 @@
 {
 	"info" : {
-		"name" : "Spawn Stuff"
+		"name" : "Spawn Stuff",
+		"description" : "Adds a new button to the start menu that allows spawning of about everything"
 	},
 	
 	"radiant" : {
@@ -27,5 +28,6 @@
 	},
 	
 	"rp" : {
+		"required_version" : 1401
 	}
 }
