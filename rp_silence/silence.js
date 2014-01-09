@@ -11,7 +11,7 @@ radiant.call('rp:init_server').done(function()
 						'volume': 0
 		});
 		
-		rp.set_call_proxy('radiant:play_music', function() { /* no, no, music afuera */ });
+		rp.set_call_proxy('radiant:play_music', function() { /* no, no, music afuera */ return {}; });
 		
 		}, 0);
 });
