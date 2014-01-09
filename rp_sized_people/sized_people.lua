@@ -52,7 +52,7 @@ local function set_size(ent, ent_name)
 	
 	-- Set the speed of this entity, which is *inverse*. i.e. the smaller the faster.
 	local attributes = ent:get_component('stonehearth:attributes')
-	attributes:set_attribute('speed', :get_attribute('speed') * 1/size)
+	attributes:set_attribute('speed', attributes:get_attribute('speed') * 1/size)
 end
 
 for mod_name, mod in pairs(rp.available_mods) do
@@ -60,7 +60,7 @@ for mod_name, mod in pairs(rp.available_mods) do
 	if mod.manifest.radiant and mod.manifest.radiant.entities then
 		for ent_name, ent_uri in pairs(mod.manifest.radiant.entities) do
 			if ent_uri:find('entities/humans/') then
-				rp.add_entity_created_hook(modName .. ':' .. ent_name, set_size, mod_name .. ':' .. ent_name)
+				rp.add_entity_created_hook(mod_name .. ':' .. ent_name, set_size, mod_name .. ':' .. ent_name)
 			end
 		end
 	end
