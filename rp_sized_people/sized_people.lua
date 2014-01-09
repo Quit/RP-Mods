@@ -5,8 +5,8 @@
 local SIZES = 
 {
 	male = {
-		min = 1,
-		max = 1.1
+		min = 0.95,
+		max = 1.05
 	},
 	
 	female = { 
@@ -19,9 +19,9 @@ local _
 _, SIZES = rp.load_config('config/sized_people.json', SIZES)
 
 -- Function that re-sizes an entity.
-local function setSize(ent, gender, index)
+local function set_size(ent, ent_name)
 	-- Check if we have a size for this cute little fella
-	local size = SIZES[gender .. '_' .. index]
+	local size = SIZES[ent_name]
 	
 	-- Validate
 	if size and (not size.min or not size.max) then
@@ -31,7 +31,12 @@ local function setSize(ent, gender, index)
 	
 	-- Default to gender
 	if not size then
-		size = SIZES[gender]
+		-- Try to guess its gender?
+		if ent_name:find('female') then
+			size = SIZES.female
+		elseif ent_name:find('male') then
+			size = SIZES.male
+		end
 	end
 	
 	if not size then
@@ -48,14 +53,18 @@ local function setSize(ent, gender, index)
 	
 	-- Set the speed of this entity, which is *inverse*. i.e. the smaller the faster.
 	local attributes = ent:get_component('stonehearth:attributes')
-	ent:add_component('stonehearth:attributes'):set_attribute('speed', 100 * 1/size)
+	attributes:set_attribute('speed', :get_attribute('speed') * 1/size)
 end
 
--- For now, there's only 3 citizens and they're either male or female.
-for i = 1, 3 do
-	for k, gender in pairs({'male', 'female'}) do
-		-- Create a hook to mess around with them after they have been created.
-		rp.add_entity_created_hook('stonehearth:' .. gender .. '_' .. i, setSize, gender, i)
+for mod_name, mod in pairs(rp.available_mods) do
+	-- Has entities?
+	if mod.manifest.radiant and mod.manifest.radiant.entities then
+		for ent_name, ent_uri in pairs(mod.manifest.radiant.entities) do
+			if ent_uri:find('entities/humans/') then
+				rp.add_entity_created_hook(modName .. ':' .. ent_name, set_size, mod_name .. ':' .. ent_name, ent_uri)
+				rp.logf('Re-size %s:%s', mod_name, ent_name)
+			end
+		end
 	end
 end
 
