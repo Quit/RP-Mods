@@ -222,7 +222,7 @@ function SpawnStuff:_on_mouse_event(e, response)
 	if e:up(2) and s.location then
     local inc = 90
 		-- Shift turns 15° instead of 90
-		if _radiant.client.is_key_down(_radiant.client.KeyboardInput.LEFT_SHIFT) or _radiant.client.is_key_down(_radiant.client.KeyboardInput.RIGHT_SHIFT) then
+		if self:_shift_down() then
 			inc = 15
 		end
 		
@@ -241,11 +241,15 @@ function SpawnStuff:_on_mouse_event(e, response)
     end)
 		
 		-- ... again?
-		if _radiant.client.is_key_down(_radiant.client.KeyboardInput.LEFT_SHIFT) or _radiant.client.is_key_down(_radiant.client.KeyboardInput.RIGHT_SHIFT) then
+		if self:_shift_down() then
 			_radiant.call('rp_spawn_stuff:choose_spawn_location', self._entity_id, self._entity_uri, self._curr_rotation)
 		end
   end
   return true
+end
+
+function SpawnStuff:_shift_down()
+	return _radiant.client.is_key_down(_radiant.client.KeyboardInput.KEY_LEFT_SHIFT) or _radiant.client.is_key_down(_radiant.client.KeyboardInput.KEY_RIGHT_SHIFT)
 end
 
 function SpawnStuff:_on_keyboard_event(e)
