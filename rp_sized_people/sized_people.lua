@@ -1,7 +1,6 @@
--- TODO: Move this into a JSON.
 -- TODO: make sure the TODO above stays in this code for all eternity.
 
--- Format: gender = {min %, max % }
+-- Format: gender_or_entity_name => { min => min_percent_value, max => max_percent_value }
 local SIZES = 
 {
 	male = {
@@ -61,8 +60,7 @@ for mod_name, mod in pairs(rp.available_mods) do
 	if mod.manifest.radiant and mod.manifest.radiant.entities then
 		for ent_name, ent_uri in pairs(mod.manifest.radiant.entities) do
 			if ent_uri:find('entities/humans/') then
-				rp.add_entity_created_hook(modName .. ':' .. ent_name, set_size, mod_name .. ':' .. ent_name, ent_uri)
-				rp.logf('Re-size %s:%s', mod_name, ent_name)
+				rp.add_entity_created_hook(modName .. ':' .. ent_name, set_size, mod_name .. ':' .. ent_name)
 			end
 		end
 	end
