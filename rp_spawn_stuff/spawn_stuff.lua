@@ -99,7 +99,6 @@ end
 
 -- Called by JS
 function SpawnStuff:get_start_menu(session, response)
-	print('start menu was requested')
 	self.whitelist = 
 	{
 --~ 		professions = checkProfessions, -- this doesn't work too well right now.
@@ -164,7 +163,7 @@ function SpawnStuff:get_start_menu(session, response)
 								hotkey = self:get_hotkey(#category.elements),
 								click = { 
 									action = 'call', 
-									['function'] = 'rp_spawnstuff:choose_spawn_location',
+									['function'] = 'rp_spawn_stuff:choose_spawn_location',
 									args = { modName .. ':' .. entName, entPath }
 								} 
 							}
@@ -187,7 +186,7 @@ function SpawnStuff:get_start_menu(session, response)
 		{
 			name = 'Spawn',
 			hotkey = 'x',
-			icon = '/rp_spawnstuff/spawn_stuff.png',
+			icon = '/rp_spawn_stuff/spawn_stuff.png',
 			elements = mods
 		}
 	}
@@ -233,7 +232,7 @@ function SpawnStuff:_on_mouse_event(e, response)
 	
   if e:up(1) and s.location then
 		_radiant.call('radiant:play_sound', 'stonehearth:sounds:place_structure')
-    _radiant.call('rp_spawnstuff:spawn_stuff', self._entity_id, self._entity_uri, pt, self._curr_rotation + 180):done(function(result)
+    _radiant.call('rp_spawn_stuff:spawn_stuff', self._entity_id, self._entity_uri, pt, self._curr_rotation + 180):done(function(result)
       response:resolve(result)
     end):fail(function(result)
       response:reject(result)
@@ -243,7 +242,7 @@ function SpawnStuff:_on_mouse_event(e, response)
 		
 		-- ... again?
 		if _radiant.client.is_key_down(_radiant.client.KeyboardInput.LEFT_SHIFT) or _radiant.client.is_key_down(_radiant.client.KeyboardInput.RIGHT_SHIFT) then
-			_radiant.call('rp_spawnstuff:choose_spawn_location', self._entity_id, self._entity_uri, self._curr_rotation)
+			_radiant.call('rp_spawn_stuff:choose_spawn_location', self._entity_id, self._entity_uri, self._curr_rotation)
 		end
   end
   return true
