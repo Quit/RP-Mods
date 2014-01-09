@@ -7,7 +7,7 @@
 	"radiant" : {
 		"functions" : {
 			"summon_worker" : {
-				"controller": "file(call_handlers/summon_worker_handler.lua)",
+				"controller": "file(summon_worker_handler.lua)",
 				"endpoint" : "server"
 			}
 		}
