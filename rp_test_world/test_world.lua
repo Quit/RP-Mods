@@ -6,10 +6,10 @@ if not WG then
 	error('Could not load WorldGeneration service!')
 end
 
-if WG._create_test_blueprint then
-	WG._create_world_blueprint = WG._create_test_blueprint
-else
-	error('_create_test_blueprint does no longer exist?')
+PrintTable(WG)
+
+function WG:_create_world_blueprint()
+	return self:_get_empty_blueprint(1, 1)
 end
 
 return true
