@@ -12,6 +12,6 @@
 	
 	"rp" : {
 		"server_init" : "alternate_naming.lua",
-		"conflicts" : "rp_mergename"
+		"conflicts" : "rp_merge_names"
 	}
 }

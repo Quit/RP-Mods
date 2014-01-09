@@ -4,7 +4,7 @@
 	},
 	
 	"rp" : {
-		"server_init" : "mergename.lua"
+		"server_init" : "merge_names.lua"
 	}
 }
 	
