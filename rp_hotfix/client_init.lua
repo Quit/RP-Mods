@@ -2,6 +2,7 @@ local Vec3 = _radiant.csg.Point3f
 local CameraService = radiant.mods.load('stonehearth').camera
 
 local CONFIG = {
+	-- Keys to control the camera
 	camera_keys = {
 		forward = "W",
 		backward = "S",
@@ -9,7 +10,10 @@ local CONFIG = {
 		right = "D",
 		turn_left = "Q",
 		turn_right = "E"
-	}
+	},
+	
+	-- Whether or not left click can pan the mouse
+	enable_mouse_panning = false
 }
 
 CONFIG = rp.load_config(CONFIG)
@@ -86,4 +90,36 @@ function CameraService:_calculate_keyboard_pan()
   end
 end
 
+if CONFIG.enable_mouse_panning then
+	function CameraService:_calculate_drag(e)
+		local drag_key_down = _radiant.client.is_key_down(_radiant.client.KeyboardInput.KEY_SPACE) or _radiant.client.is_mouse_button_down(_radiant.client.MouseInput.MOUSE_BUTTON_1)
+		if drag_key_down and not self._dragging then
+			do
+				local r = _radiant.renderer.scene.cast_screen_ray(e.x, e.y)
+				local screen_ray = _radiant.renderer.scene.get_screen_ray(e.x, e.y)
+				self._dragging = true
+				self._drag_origin = screen_ray.origin
+				if r.is_valid then
+					self._drag_start = r.point
+				else
+					local d = -self._drag_origin.y / screen_ray.direction.y
+					screen_ray.direction:scale(d)
+					self._drag_start = screen_ray.origin + screen_ray.direction
+				end
+				local root = _radiant.client.get_entity(1)
+				local terrain_comp = root:get_component("terrain")
+				local bounds = terrain_comp:get_bounds():to_float()
+				if not bounds:contains(self._drag_start) then
+					self._dragging = false
+				end
+			end
+		elseif not drag_key_down and self._dragging then
+			self._dragging = false
+		end
+		if not self._dragging then
+			return
+		end
+		self:_drag(e.x, e.y)
+	end
+end
 return true
