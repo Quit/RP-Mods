@@ -50,6 +50,14 @@ CONFIG = rp.load_config('config/spawn_stuff.json', CONFIG)
 
 local SINGLETON
 
+ -- list of proxies that we have, entity_uri => proxy_uri
+ -- I'm not exactly happy with having this as a global variable, but since they re-create
+ -- the SpawnStuff...
+ -- This would be a proper thing for a service, wouldn't it.
+ -- Yeah, service.
+ -- ... later.
+local proxies = {}
+
 function SpawnStuff:__init()
 	if SINGLETON then
 		SINGLETON:_destroy()
@@ -59,15 +67,9 @@ function SpawnStuff:__init()
 end
 
 -- Checks an item of a profession to see if it could be spawned or not
-function SpawnStuff:check_professions(entName, path)
-	local success, json = pcall(radiant.resources.load_json, path)
-	
-	if not success or not json or not json.components then
-		return false
-	end
-
-	for componentName, component in pairs(json.components) do
-		if componentName:find(':workshop') then
+function SpawnStuff:check_professions(entity_name, entity_uri, json)
+	for component_name, component in pairs(json.components) do
+		if component_name:find(':workshop') then
 			return component.ingredients ~= nil
 		end
 	end
@@ -77,17 +79,13 @@ end
 
 -- Criteria: Has a unit info.
 -- (that should filter out stonehearth:wolf:teeth)
-function SpawnStuff:check_critters(entName, path)
-	local success, json = pcall(radiant.resources.load_json, path)
-	
-	return success and json and json.components and json.components.unit_info
+function SpawnStuff:check_critters(entity_name, entity_uri, json)
+	return json.components and json.components.unit_info
 end
 
 -- Criteria: Extends *placed_properties
-function SpawnStuff:check_construction(entName, path)
-	local success, json = pcall(radiant.resources.load_json, path)
-	
-	return success and json and json.extends and json.extends:find('placed_properties$')
+function SpawnStuff:check_construction(entity_name, entity_uri, json)
+	return json and json.extends and json.extends:find('placed_properties$')
 end
 
 --[[ End of helper function stuff, start of the real callback things. ]]--
@@ -125,16 +123,25 @@ function SpawnStuff:get_start_menu(session, response)
 			local entFolders = {}
 			
 			-- Foreach entity
-			for entName, entPath in pairs(manifest.radiant.entities) do
+			for entity_name, entity_uri in pairs(manifest.radiant.entities) do
 				-- Get the folder.
-				local entFolder = entPath:match('entities/(.-)/')
+				local entFolder = entity_uri:match('entities/(.-)/')
 				-- We're not a proxy *and* we have a folder: ding ding.
-				if not entName:find('_proxy$') and entFolder then
+				if entFolder then
+					-- Load its json, check if it's a proxy.
+					local _, json = pcall(radiant.resources.load_json, entity_uri)
+					json = json or {}
+					local components = json.components or {}
+				
 					-- Get its entry from the allowed table
 					local allowance = self.whitelist[entFolder] or false
-					
-					if type(allowance) == 'function' then
-						allowance = allowance(self, entName, entPath)
+				
+					-- Being a proxy disqualifies.
+					if components['stonehearth:placeable_item_proxy'] then
+						proxies[components['stonehearth:placeable_item_proxy'].full_sized_entity] = modName .. ':' .. entity_name
+						allowance = false
+					elseif type(allowance) == 'function' then
+						allowance = allowance(self, entity_name, entity_uri, json)
 					end
 					
 					if allowance then
@@ -149,11 +156,10 @@ function SpawnStuff:get_start_menu(session, response)
 							table.insert(modMenu.elements, category)
 						end
 						
-						local jsonAvailable, json = pcall(radiant.resources.load_json, entPath)
-						if json and json.components and json.components.unit_info then
+						if components.unit_info then
 							json = json.components.unit_info
 						else
-							json = { name = entName }
+							json = { name = entity_name }
 						end
 						
 						table.insert(category.elements, 
@@ -164,7 +170,7 @@ function SpawnStuff:get_start_menu(session, response)
 								click = { 
 									action = 'call', 
 									['function'] = 'rp_spawn_stuff:choose_spawn_location',
-									args = { modName .. ':' .. entName, entPath }
+									args = { modName .. ':' .. entity_name, entity_uri }
 								} 
 							}
 						)
@@ -283,6 +289,11 @@ function SpawnStuff:spawn_stuff(session, response, entity_id, entity_uri, locati
 	radiant.terrain.place_entity(entity, location)
 	radiant.entities.turn_to(entity, rotation)
 	
+	-- Post spawn: add component if necessary...
+	if entity:get_component('stonehearth:placed_item') and proxies[entity_id] then
+		-- Yes, this one is placeable.
+		entity:get_component('stonehearth:placed_item'):extend({ proxy_entity = proxies[entity_id] })
+	end
 	return true
 end
 
