@@ -6,6 +6,6 @@
 	
 	"rp" : {
 		"server_init" : "sized_people.lua",
-		"required_version" : 1401
+		"required_version" : 2201
 	}
 }

@@ -28,6 +28,6 @@
 	},
 	
 	"rp" : {
-		"required_version" : 1401
+		"required_version" : 2201
 	}
 }

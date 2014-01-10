@@ -6,7 +6,7 @@ local CONFIG = {
 	}
 }
 
-CONFIG = rp.load_config('config/proxy_factions.json', CONFIG)
+CONFIG = rp.load_config(CONFIG)
 
 -- original faction name => replacement faction object
 local factionReplacements = {}

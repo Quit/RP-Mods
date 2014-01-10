@@ -6,6 +6,6 @@
 	
 	"rp" : {
 		"server_init" : "proxy_factions.lua",
-		"required_version" : 1401
+		"required_version" : 2201
 	}
 }

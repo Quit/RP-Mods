@@ -46,7 +46,7 @@ local CONFIG = {
 	}
 }
 
-CONFIG = rp.load_config('config/spawn_stuff.json', CONFIG)
+CONFIG = rp.load_config(CONFIG)
 
 local SINGLETON
 
