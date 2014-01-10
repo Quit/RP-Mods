@@ -1,0 +1,10 @@
+{
+	"info" : {
+		"name" : "RepeatPan's Amusingly Cool Hotfix Collection"
+	},
+	
+	"rp" : {
+		"client_init" : "client_init.lua",
+		"required_version" : 2201
+	}
+}
