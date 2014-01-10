@@ -1,0 +1,14 @@
+{
+	"info" : {
+		"name" : "A Developer's Dreams",
+		"description" : "It's the same map and it's all there... for you!"
+	},
+	
+	"rp" : {
+		"server_init" : "developers_dreams.lua"
+	},
+	
+	"ui" : {
+		"js" : [ "file(developers_dreams.js)" ]
+	}
+}
