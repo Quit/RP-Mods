@@ -37,7 +37,8 @@ local function set_size(ent, ent_name)
 		end
 	end
 	
-	if not size then
+	if not size or not size.min or not size.max or size.max <= size.min then
+		rp.log('[ERROR] Cannot find proper size for %q (min/max: %s/%s)', ent_name, tostring(size and size.min), tostring(size and size.max))
 		return
 	end
 	
@@ -60,6 +61,7 @@ for mod_name, mod in pairs(rp.available_mods) do
 		for ent_name, ent_uri in pairs(mod.manifest.radiant.entities) do
 			if ent_uri:find('entities/humans/') then
 				rp.add_entity_created_hook(mod_name .. ':' .. ent_name, set_size, mod_name .. ':' .. ent_name)
+				rp.logf('Found resizable: "%s:%s"', mod_name, ent_name)
 			end
 		end
 	end
