@@ -253,7 +253,7 @@ function SpawnStuff:_shift_down()
 end
 
 function SpawnStuff:_on_keyboard_event(e)
-  if e.key == _radiant.client.KeyboardInput.ESC and e.down then
+  if e.key == _radiant.client.KeyboardInput.KEY_ESC and e.down then
     self:_destroy()
 	end
   return false
