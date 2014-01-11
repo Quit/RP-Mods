@@ -11,3 +11,5 @@ end
 function WG:_create_world_blueprint()
 	return self:_get_empty_blueprint(1, 1)
 end
+
+return true
