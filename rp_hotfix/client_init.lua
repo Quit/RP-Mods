@@ -25,7 +25,7 @@ local CONFIG = {
 	side_scrolling = {
 		triggerzone = 0,
 		base_speed = 2,
-		speed_multiplier = 3
+		speed_multiplier = 2
 	},
 	
 	-- Fast scrolling stuff
@@ -131,11 +131,13 @@ end
 
 if ENABLE_MOUSE_PANNING or SIDE_SCROLLING_TRIGGERZONE > 0 then
 	function CameraService:_calculate_side_scrolling_speed_factor(x)
-		if x <= 0 then
-			return SIDE_SCROLLING_MULTIPLIER
+		if x < 0 then
+			return 0
+		elseif x == 0 then
+			return SIDE_SCROLLING_SPEED_MULTIPLIER
 		end
 		
-		return math.min((SIDE_SCROLLING_TRIGGERZONE - x) / SIDE_SCROLLING_TRIGGERZONE, SIDE_SCROLLING_SPEED_MULTIPLIER)
+		return (SIDE_SCROLLING_TRIGGERZONE - x) / SIDE_SCROLLING_TRIGGERZONE * SIDE_SCROLLING_SPEED_MULTIPLIER
 	end
 	
 	function CameraService:_calculate_drag(e)
@@ -173,19 +175,21 @@ if ENABLE_MOUSE_PANNING or SIDE_SCROLLING_TRIGGERZONE > 0 then
 			
 			local screen_width, screen_height = _screen.get_width(), _screen.get_height()
 			
-			if e.x <=  SIDE_SCROLLING_TRIGGERZONE and e.x >= 0 then
+			-- No need to check for values that would be < 0; _calculate_side_scrolling_speed_factor does that for us
+			if e.x <=  SIDE_SCROLLING_TRIGGERZONE then
 				x_scale = -speed * self:_calculate_side_scrolling_speed_factor(e.x)
-			elseif screen_width - e.x <= SIDE_SCROLLING_TRIGGERZONE and e.x <= screen_width then
+			elseif screen_width - e.x <= SIDE_SCROLLING_TRIGGERZONE then
 				x_scale = speed * self:_calculate_side_scrolling_speed_factor(screen_width - e.x)
 			end
 			
-			if e.y < SIDE_SCROLLING_TRIGGERZONE and e.y >= 0 then
+			if e.y < SIDE_SCROLLING_TRIGGERZONE then
 				y_scale = -speed * self:_calculate_side_scrolling_speed_factor(e.y)
 			elseif _screen.get_height() - e.y < SIDE_SCROLLING_TRIGGERZONE then
 				y_scale = speed * self:_calculate_side_scrolling_speed_factor(screen_height - e.y)
 			end
 			
 			self._mouse_delta = self:_move_camera(x_scale, y_scale)
+			print(e.x, e.y, x_scale, y_scale)
 			self._continuous_delta = self._keyboard_delta + self._mouse_delta
 		end
 		if not self._dragging then
