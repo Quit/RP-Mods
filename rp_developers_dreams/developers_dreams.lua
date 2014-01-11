@@ -12,7 +12,6 @@ end
 
 -- It's a tiny tiny - how often did I say this already
 function WG:_create_world_blueprint()
-	print('create blueprint of size ', size)
 	return self:_get_empty_blueprint(size, size)
 end
 
