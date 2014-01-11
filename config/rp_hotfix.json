@@ -1,0 +1,17 @@
+{
+	"camera_keys" : {
+		"forward" : "W",
+		"backward" : "S",
+		"left" : "A",
+		"right" : "D",
+		"fast_scrolling" : "LEFT_SHIFT"
+	},
+	
+	"enable_mouse_panning" : true,
+	
+	"side_scrolling" : {
+		"triggerzone" : 50,
+		"base_speed" : 2.5,
+		"speed_multiplier" : 2
+	}
+}
