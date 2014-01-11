@@ -40,22 +40,22 @@ end
 
 -- Returns a random name from a list by trying some educated guesses.
 local function get_random_name_from_list(list)
---~ 	PrintTable(list)
 	-- Asser that our list isn't empty.
-	assert(#list > 0, "get_random_name_from_list cannot operate on an empty list")
+	local parts = list.parts or list
+	assert(#parts > 0, "get_random_name_from_list cannot operate on an empty list")
 	
 	-- Check if we have either a string or a table as first index
-	if type(list[1]) == 'table' then
+	if type(parts[1]) == 'table' then
 		-- We have to do the ugly one.
 		
 		-- List that will contain each part
 		local t = {}
 		
 		-- How many parts there are
-		local count = #list
+		local count = #parts
 		
 		for i = 1, count do
-			local sub_list = list[i]
+			local sub_list = parts[i]
 			-- If the sub-list (part?) is defining a chance, evaluate it
 			if not sub_list.chance or math.random(100) <= sub_list.chance then
 				-- Insert it into the list of parts.
@@ -63,11 +63,18 @@ local function get_random_name_from_list(list)
 			end
 		end
 		
+		local result = table.concat(t, '')
+		
+		if list.replacements then
+			for _, replace in pairs(list.replacements) do
+				result = result:gsub(replace[1], replace[2])
+			end
+		end
 		-- Return the glued-together list of word parts. That should make a word. Hopefully.
-		return table.concat(t, '')
+		return result
 	else
 		-- A "normal" list.
-		return get_random_element(list)
+		return get_random_element(parts)
 	end
 end
 	
@@ -81,6 +88,7 @@ function rp.enable_alternate_name_generator(faction)
 end
 
 local population = api.population
+
 -- Now, magic.
 for k, entry in pairs(CONFIG.factions) do
 	-- God I wish I had continue
@@ -97,6 +105,21 @@ for k, entry in pairs(CONFIG.factions) do
 			else
 				rp.enable_alternate_name_generator(faction)
 				rp.logf('Successfully patched %q %q', tostring(factionName), tostring(kingdom))
+				if tonumber(entry.dump) then
+					local dump = tonumber(entry.dump)
+					local filename = kingdom:gsub('[^A-Za-z]', '_'):gsub('_+', '_') .. ".txt"
+					rp.logf('Dumping %d entries into %q', dump, filename)
+					
+					local f, err = io.open(filename, 'w')
+					if not f then
+						rp.logf('Cannot open %q: %s', filename, tostring(err))
+					else
+						for i = 1, dump do
+							local gender = i % 2 == 0 and 'male' or 'female'
+							f:write(string.format('[% 6s]\t%s\n', gender, faction:generate_random_name(gender)))
+						end
+					end
+				end
 			end
 		end
 	end
