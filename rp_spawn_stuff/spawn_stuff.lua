@@ -43,7 +43,9 @@ local CONFIG = {
 		"f",
 		"g",
 		"h"
-	}
+	},
+	
+	start_menu_hotkey = 'x'
 }
 
 CONFIG = rp.load_config(CONFIG)
@@ -158,6 +160,10 @@ function SpawnStuff:get_start_menu(session, response)
 						
 						if components.unit_info then
 							json = json.components.unit_info
+							-- Set our category's icon to the first icon we encounter.
+							if not category.icon and json.icon then
+								category.icon = json.icon
+							end
 						else
 							json = { name = entity_name }
 						end
@@ -191,7 +197,7 @@ function SpawnStuff:get_start_menu(session, response)
 	{
 		{
 			name = 'Spawn',
-			hotkey = 'x',
+			hotkey = CONFIG.start_menu_hotkey,
 			icon = '/rp_spawn_stuff/spawn_stuff.png',
 			elements = mods
 		}
