@@ -22,9 +22,11 @@ local CONFIG = {
 	enable_mouse_panning = false,
 	
 	-- Side-scrolling stuff.
-	side_scrolling_triggerzone = 0,
-	side_scrolling_base_speed = 2, -- base speed, i.e. position.y * this
-	side_scrolling_speed_multiplier = 3, -- maximum speed multiplier (at the edge of the screen => this, in the game => 0)
+	side_scrolling = {
+		triggerzone = 0,
+		base_speed = 2,
+		speed_multiplier = 3
+	},
 	
 	-- Fast scrolling stuff
 	fast_scrolling_multiplier = 2.5
@@ -34,9 +36,9 @@ CONFIG = rp.load_config(CONFIG)
 
 -- Hotfix #1: Camera.
 local KEYS = CONFIG.camera_keys
-local SIDE_SCROLLING_TRIGGERZONE = CONFIG.side_scrolling_triggerzone
-local SIDE_SCROLLING_SPEED_MULTIPLIER = CONFIG.side_scrolling_speed_multiplier
-local SIDE_SCROLLING_BASE_SPEED = CONFIG.side_scrolling_base_speed
+local SIDE_SCROLLING_TRIGGERZONE = CONFIG.side_scrolling.triggerzone
+local SIDE_SCROLLING_SPEED_MULTIPLIER = CONFIG.side_scrolling.speed_multiplier
+local SIDE_SCROLLING_BASE_SPEED = CONFIG.side_scrolling.base_speed
 local ENABLE_MOUSE_PANNING = CONFIG.enable_mouse_panning
 local FAST_SCROLLING_MULTIPLIER = CONFIG.fast_scrolling_multiplier
 
