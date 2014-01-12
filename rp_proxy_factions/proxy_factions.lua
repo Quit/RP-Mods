@@ -1,4 +1,4 @@
-local population = api.population
+local population = radiant.mods.load('stonehearth').population
 
 local CONFIG = { 
 	replacements = {  -- faction_name => { faction_name = "another faction name, or the same", kingdom = "another kingdom name, or the same" } } replacement file/kingdom... whatever :X

@@ -1,7 +1,7 @@
 local maleCreated = false
 
 -- Copypaste, again, from NewGameHandler with modifications
-local pop_service = api.population
+local pop_service = radiant.mods.load('stonehearth').population
 local faction = pop_service:get_faction("civ", "stonehearth:factions:ascendancy")
 
 local oldCreateCitizen = faction.create_new_citizen

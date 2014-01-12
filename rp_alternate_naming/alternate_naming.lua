@@ -87,7 +87,7 @@ function rp.enable_alternate_name_generator(faction)
 	end
 end
 
-local population = api.population
+local population = radiant.mods.load('stonehearth').population
 
 -- Now, magic.
 for k, entry in pairs(CONFIG.factions) do

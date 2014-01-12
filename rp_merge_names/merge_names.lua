@@ -1,4 +1,4 @@
-local faction = api.population:get_faction("civ", "stonehearth:factions:ascendancy")
+local faction = radiant.mods.load('stonehearth').population:get_faction("civ", "stonehearth:factions:ascendancy")
 
 local function getRandom(names)
 	return names[math.random(#names)]
