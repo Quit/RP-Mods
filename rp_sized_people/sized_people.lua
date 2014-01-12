@@ -1,5 +1,3 @@
--- TODO: make sure the TODO above stays in this code for all eternity.
-
 local MOD = class()
 
 -- Format: gender_or_entity_name => { min => min_percent_value, max => max_percent_value }
@@ -17,10 +15,8 @@ MOD.SIZES =
 }
 
 function MOD:__init()
-	print('iniiit')
 	self.SIZES = rp.load_config(self.SIZES)
 	self:_load_entity_list()
-	PrintTable(self._entity_list)
 	radiant.events.listen(radiant.events, 'stonehearth:entity_created', self, self._entity_created)
 end
 
@@ -70,7 +66,6 @@ function MOD:_load_entity_list()
 		-- Has entities?
 		if mod.manifest.radiant and mod.manifest.radiant.entities then
 			for entity_id, entity_uri in pairs(mod.manifest.radiant.entities) do
-				print(entity_uri)
 				if entity_uri:find('entities/humans/') then
 					entities[mod_name .. ':' .. entity_id] = true
 					rp.logf('Found resizable: "%s:%s"', mod_name, entity_id)
