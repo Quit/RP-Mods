@@ -15,6 +15,6 @@
 	
 	"rp" : {
 		"server_init" : "server_init.lua",
-		"required_version" : 1401
+		"required_version" : 2301
 	}
 }

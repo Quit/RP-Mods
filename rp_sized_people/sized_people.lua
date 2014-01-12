@@ -1,7 +1,9 @@
 -- TODO: make sure the TODO above stays in this code for all eternity.
 
+local MOD = class()
+
 -- Format: gender_or_entity_name => { min => min_percent_value, max => max_percent_value }
-local SIZES = 
+MOD.SIZES = 
 {
 	male = {
 		min = 0.95,
@@ -14,31 +16,36 @@ local SIZES =
 	}
 }
 
-SIZES = rp.load_config(SIZES)
+function MOD:__init()
+	print('iniiit')
+	self.SIZES = rp.load_config(self.SIZES)
+	self:_load_entity_list()
+	PrintTable(self._entity_list)
+	radiant.events.listen(radiant.events, 'stonehearth:entity_created', self, self._entity_created)
+end
 
--- Function that re-sizes an entity.
-local function set_size(ent, ent_name)
+function MOD:set_size(entity, entity_id)
 	-- Check if we have a size for this cute little fella
-	local size = SIZES[ent_name]
+	local size = self.SIZES[entity_id]
 	
 	-- Validate
 	if size and (not size.min or not size.max) then
-		rp.logf('Invalid size entry for %s_%d: min/max not found', gender, index)
+		rp.logf('Invalid size entry for %s: min/max not found', entity_id)
 		size = nil
 	end
 	
 	-- Default to gender
 	if not size then
 		-- Try to guess its gender?
-		if ent_name:find('female') then
-			size = SIZES.female
-		elseif ent_name:find('male') then
-			size = SIZES.male
+		if entity_id:find('female') then
+			size = self.SIZES.female
+		elseif entity_id:find('male') then
+			size = self.SIZES.male
 		end
 	end
 	
 	if not size or not size.min or not size.max or size.max <= size.min then
-		rp.log('[ERROR] Cannot find proper size for %q (min/max: %s/%s)', ent_name, tostring(size and size.min), tostring(size and size.max))
+		rp.log('[ERROR] Cannot find proper size for %q (min/max: %s/%s)', entity_id, tostring(size and size.min), tostring(size and size.max))
 		return
 	end
 	
@@ -46,25 +53,40 @@ local function set_size(ent, ent_name)
 	size = math.random(size.min * 1000, size.max * 1000) / 1000
 
 	-- Determine the current height
-	local render_info = ent:get_component('render_info')
+	local render_info = entity:add_component('render_info')
+	
 	-- Apply size; percentual.
-	ent:add_component("render_info"):set_scale(size * render_info:get_scale())
+	entity:add_component("render_info"):set_scale(size * render_info:get_scale())
 	
 	-- Set the speed of this entity, which is *inverse*. i.e. the smaller the faster.
-	local attributes = ent:get_component('stonehearth:attributes')
+	local attributes = entity:add_component('stonehearth:attributes')
+	
 	attributes:set_attribute('speed', attributes:get_attribute('speed') * 1/size)
 end
 
-for mod_name, mod in pairs(rp.available_mods) do
-	-- Has entities?
-	if mod.manifest.radiant and mod.manifest.radiant.entities then
-		for ent_name, ent_uri in pairs(mod.manifest.radiant.entities) do
-			if ent_uri:find('entities/humans/') then
-				rp.add_entity_created_hook(mod_name .. ':' .. ent_name, set_size, mod_name .. ':' .. ent_name)
-				rp.logf('Found resizable: "%s:%s"', mod_name, ent_name)
+function MOD:_load_entity_list()
+	local entities = {}
+	for mod_name, mod in pairs(rp.available_mods) do
+		-- Has entities?
+		if mod.manifest.radiant and mod.manifest.radiant.entities then
+			for entity_id, entity_uri in pairs(mod.manifest.radiant.entities) do
+				print(entity_uri)
+				if entity_uri:find('entities/humans/') then
+					entities[mod_name .. ':' .. entity_id] = true
+					rp.logf('Found resizable: "%s:%s"', mod_name, entity_id)
+				end
 			end
 		end
 	end
+	
+	self._entity_list = entities
 end
 
-return true
+function MOD:_entity_created(event)
+	if self._entity_list[event.entity_id] then
+		self:set_size(event.entity, event.entity_id)
+	end
+end
+
+-- TODO: Have RP handle this in the future
+return MOD()

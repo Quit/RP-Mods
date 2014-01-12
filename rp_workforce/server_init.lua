@@ -1,8 +1,12 @@
 -- Hook the default standard
-rp.add_entity_created_hook('stonehearth:camp_standard', function(self)
-	-- And add our little command.
-	local commands = self:add_component("stonehearth:commands")
-	commands:add_command("/rp_workforce/commands/summon_worker")
-end)
+local MOD = {}
 
-return true
+function MOD:_entity_created(event)
+	if event.entity_id == 'stonehearth:camp_standard' then
+		local commands = event.entity:add_component('stonehearth:commands'):add_command('/rp_workforce/commands/summon_worker')
+	end
+end
+
+
+radiant.events.listen(radiant.events, 'stonehearth:entity_created', MOD, MOD._entity_created)
+return MOD
