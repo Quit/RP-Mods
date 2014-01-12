@@ -53,11 +53,6 @@ function MOD:set_size(entity, entity_id)
 	
 	-- Apply size; percentual.
 	entity:add_component("render_info"):set_scale(size * render_info:get_scale())
-	
-	-- Set the speed of this entity, which is *inverse*. i.e. the smaller the faster.
-	local attributes = entity:add_component('stonehearth:attributes')
-	
-	attributes:set_attribute('speed', attributes:get_attribute('speed') * 1/size)
 end
 
 function MOD:_load_entity_list()
