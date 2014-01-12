@@ -68,50 +68,13 @@ function SpawnStuff:__init()
 	SINGLETON = self
 end
 
--- Checks an item of a profession to see if it could be spawned or not
-function SpawnStuff:check_professions(entity_name, entity_uri, json)
-	for component_name, component in pairs(json.components) do
-		if component_name:find(':workshop') then
-			return component.ingredients ~= nil
-		end
-	end
-	
-	return false
-end
-
--- Criteria: Has a unit info.
--- (that should filter out stonehearth:wolf:teeth)
-function SpawnStuff:check_critters(entity_name, entity_uri, json)
-	return json.components and json.components.unit_info
-end
-
--- Criteria: Extends *placed_properties
-function SpawnStuff:check_construction(entity_name, entity_uri, json)
-	return json and json.extends and json.extends:find('placed_properties$')
-end
-
---[[ End of helper function stuff, start of the real callback things. ]]--
-
 -- Returns a hotkey based on a number
 function SpawnStuff:get_hotkey(number)
 	return CONFIG.hotkeys[number + 1]
 end
 
 -- Called by JS
-function SpawnStuff:get_start_menu(session, response)
-	self.whitelist = 
-	{
---~ 		professions = checkProfessions, -- this doesn't work too well right now.
-		construction = self.check_construction, -- wooden_door! wooden_window_frame? stockpile ...
-		furniture = true,
-		plants = true,
-		trees = true,
-		toys = true,
-		critters = self.check_critters,
-		ground_clutter = true,
-		crafting_materials = true -- not sure about this one.
-	}
-	
+function SpawnStuff:get_start_menu(session, response)	
 	local mods = {} -- table, each entry represents a mod
 	
 	
@@ -136,14 +99,13 @@ function SpawnStuff:get_start_menu(session, response)
 					local components = json.components or {}
 				
 					-- Get its entry from the allowed table
-					local allowance = self.whitelist[entFolder] or false
-				
+					local allowance = false				
 					-- Being a proxy disqualifies.
 					if components['stonehearth:placeable_item_proxy'] then
 						proxies[components['stonehearth:placeable_item_proxy'].full_sized_entity] = modName .. ':' .. entity_name
 						allowance = false
-					elseif type(allowance) == 'function' then
-						allowance = allowance(self, entity_name, entity_uri, json)
+					elseif components.model_variants and entFolder ~= 'professions' and entFolder ~= 'humans' then
+						allowance = true
 					end
 					
 					if allowance then
