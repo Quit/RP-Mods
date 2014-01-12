@@ -189,7 +189,6 @@ if ENABLE_MOUSE_PANNING or SIDE_SCROLLING_TRIGGERZONE > 0 then
 			end
 			
 			self._mouse_delta = self:_move_camera(x_scale, y_scale)
-			print(e.x, e.y, x_scale, y_scale)
 			self._continuous_delta = self._keyboard_delta + self._mouse_delta
 		end
 		if not self._dragging then
