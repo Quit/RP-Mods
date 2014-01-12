@@ -12,12 +12,19 @@ var developersDreams = function()
 					App.gotoGame();
 					//~ App.gameView.addView(App.StonehearthCreateCampView);
 					App.gameView._addViews(App.gameView.views.complete);
-					radiant.call('stonehearth:create_camp', { x: -3, y: 16, z: -7 });
-					radiant.call("stonehearth:create_stockpile", { x: 2, y: 16, z: -9 }, [ 5, 5 ])
-					this.destroy();
-         }
+					self._rp_createCamp();
+				}
       }
-   },
+		},
+		
+		_rp_createCamp : function() { 
+			var self = this;
+			radiant.call('stonehearth:create_camp', { x: -3, y: 16, z: 7 }).done(function() { self._rp_createStockpile(); });
+		},
+			
+		_rp_createStockpile : function() {
+			radiant.call('stonehearth:create_stockpile', { x: 2, y: 16, z: 6 }, [ 5, 5 ]);
+		}
 	});
 }
 
