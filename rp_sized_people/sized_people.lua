@@ -61,7 +61,7 @@ function MOD:_load_entity_list()
 		-- Has entities?
 		if mod.manifest.radiant and mod.manifest.radiant.entities then
 			for entity_id, entity_uri in pairs(mod.manifest.radiant.entities) do
-				if entity_uri:find('entities/humans/') then
+				if entity_uri:find('entities/humans/') or self.SIZES[mod_name .. ':' .. entity_id] then
 					entities[mod_name .. ':' .. entity_id] = true
 					rp.logf('Found resizable: "%s:%s"', mod_name, entity_id)
 				end
