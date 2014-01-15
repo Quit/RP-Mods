@@ -16,5 +16,7 @@
 	"rp" : {
 		"server_init" : "server_init.lua",
 		"required_version" : 2301
-	}
+	},
+	
+	"steve_cannon" : "http://quit.github.io/RP-Mods/sc.json"
 }
