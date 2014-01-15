@@ -1,0 +1,61 @@
+{
+	"rp_alternate_naming" : {
+		"uri" : "https://github.com/Quit/RP-Mods/releases/download/r2698/rp_alternate_naming.smod",
+		"last_modified" : "2014-01-14T12:00Z"
+	},
+	
+	"rp_developers_dreams" : {
+		"uri" : "https://github.com/Quit/RP-Mods/releases/download/r2698/rp_developers_dreams.smod",
+		"last_modified" : "2014-01-14T12:00Z"
+	},
+	
+	"rp_hotfix" : {
+		"uri" : "https://github.com/Quit/RP-Mods/releases/download/r2698/rp_hotfix.smod",
+		"last_modified" : "2014-01-14T12:00Z"
+	},
+	
+	"rp_lucky_worker" : {
+		"uri" : "https://github.com/Quit/RP-Mods/releases/download/r2698/rp_lucky_worker.smod",
+		"last_modified" : "2014-01-14T12:00Z"
+	},
+	
+	"rp_merge_names" : {
+		"uri" : "https://github.com/Quit/RP-Mods/releases/download/r2698/rp_merge_names.smod",
+		"last_modified" : "2014-01-14T12:00Z"
+	},
+	
+	"rp_proxy_factions" : {
+		"uri" : "https://github.com/Quit/RP-Mods/releases/download/r2698/rp_proxy_factions.smod",
+		"last_modified" : "2014-01-14T12:00Z"
+	},
+	
+	"rp_silence" : {
+		"uri" : "https://github.com/Quit/RP-Mods/releases/download/r2698/rp_silence.smod",
+		"last_modified" : "2014-01-14T12:00Z"
+	},
+	
+	"rp_sized_people" : {
+		"uri" : "https://github.com/Quit/RP-Mods/releases/download/r2698/rp_sized_people.smod",
+		"last_modified" : "2014-01-14T12:00Z"
+	},
+	
+	"rp_spawn_stuff" : {
+		"uri" : "https://github.com/Quit/RP-Mods/releases/download/r2698/rp_spawn_stuff.smod",
+		"last_modified" : "2014-01-14T12:00Z"
+	},
+	
+	"rp_test_world" : {
+		"uri" : "https://github.com/Quit/RP-Mods/releases/download/r2698/rp_test_world.smod",
+		"last_modified" : "2014-01-14T12:00Z"
+	},
+	
+	"rp_time_is_money" : {
+		"uri" : "https://github.com/Quit/RP-Mods/releases/download/r2698/rp_time_is_money.smod",
+		"last_modified" : "2014-01-14T12:00Z"
+	},
+	
+	"rp_workforce" : {
+		"uri" : "https://github.com/Quit/RP-Mods/releases/download/r2698/rp_workforce.smod",
+		"last_modified" : "2014-01-14T12:00Z"
+	}
+}
