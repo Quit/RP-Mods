@@ -1,6 +1,6 @@
 {
 	"info" : {
-		"name" : "Proxy Factions"
+		"name" : "Proxy Factions",
 		"description" : "A library that allows re-directing queries of factions to other factions."
 	},
 	
