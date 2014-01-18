@@ -2,7 +2,7 @@ var SpawnStuff = RPMod.extend({
 	work : function()
 	{
 		var self = this;
-		radiant.call('rp_spawn_stuff:get_start_menu').done(function(o) { rp.add_to_start_menu(o); rp.log('oi add stuff'); self.resolve(); });
+		radiant.call('rp_spawn_stuff:get_start_menu').done(function(o) { rp.add_to_start_menu(o); self.resolve(); });
 	}
 });
 
