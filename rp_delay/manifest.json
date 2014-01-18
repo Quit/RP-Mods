@@ -1,0 +1,9 @@
+{
+	"info" : { "name" : "Potato CPU" },
+	
+	"ui" : {
+		"js" : [ "file(delay.js)" ]
+	},
+	
+	"rp" : { "required_version" : 2699 }
+}
