@@ -17,7 +17,7 @@
 	},
 	
 	"rp" : {
-		"required_version" : 1401
+		"required_version" : 2699
 	},
 	
 	"steve_cannon" : "http://quit.github.io/RP-Mods/sc.json"

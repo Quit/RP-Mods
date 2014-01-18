@@ -1,3 +1,9 @@
-radiant.call('rp:init_server').done(function() {
-	radiant.call('rp_spawn_stuff:get_start_menu').done(rp.add_to_start_menu);
+var SpawnStuff = RPMod.extend({
+	work : function()
+	{
+		var self = this;
+		radiant.call('rp_spawn_stuff:get_start_menu').done(function(o) { rp.add_to_start_menu(o); rp.log('oi add stuff'); self.resolve(); });
+	}
 });
+
+rp.register_mod('rp_spawn_stuff', SpawnStuff);

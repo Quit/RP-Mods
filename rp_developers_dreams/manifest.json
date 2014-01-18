@@ -5,7 +5,8 @@
 	},
 	
 	"rp" : {
-		"server_init" : "developers_dreams.lua"
+		"server_init" : "developers_dreams.lua",
+		"required_version" : 2699
 	},
 	
 	"ui" : {
