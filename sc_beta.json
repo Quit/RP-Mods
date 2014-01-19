@@ -1,0 +1,16 @@
+{
+  "rp_alternate_naming" : { "uri" : "https://github.com/Quit/RP-Mods/releases/download/r2701/rp_alternate_naming.smod", "last_modified" : "2014-01-19T06:29:15Z" },
+  "rp_delay" : { "uri" : "https://github.com/Quit/RP-Mods/releases/download/r2701/rp_delay.smod", "last_modified" : "2014-01-18T07:51:01Z" },
+  "rp_developers_dreams" : { "uri" : "https://github.com/Quit/RP-Mods/releases/download/r2701/rp_developers_dreams.smod", "last_modified" : "2014-01-19T07:44:49Z" },
+  "rp_hotfix" : { "uri" : "https://github.com/Quit/RP-Mods/releases/download/r2701/rp_hotfix.smod", "last_modified" : "2014-01-18T07:33:28Z" },
+  "rp_lucky_worker" : { "uri" : "https://github.com/Quit/RP-Mods/releases/download/r2701/rp_lucky_worker.smod", "last_modified" : "2014-01-19T06:38:44Z" },
+  "rp_silence" : { "uri" : "https://github.com/Quit/RP-Mods/releases/download/r2701/rp_silence.smod", "last_modified" : "2014-01-18T07:33:28Z" },
+  "rp_sized_people" : { "uri" : "https://github.com/Quit/RP-Mods/releases/download/r2701/rp_sized_people.smod", "last_modified" : "2014-01-19T08:38:45Z" },
+  "rp_spawn_stuff" : { "uri" : "https://github.com/Quit/RP-Mods/releases/download/r2701/rp_spawn_stuff.smod", "last_modified" : "2014-01-18T07:43:36Z" },
+  "rp_test_world" : { "uri" : "https://github.com/Quit/RP-Mods/releases/download/r2701/rp_test_world.smod", "last_modified" : "2014-01-19T07:44:49Z" },
+  "rp_time_is_money" : { "uri" : "https://github.com/Quit/RP-Mods/releases/download/r2701/rp_time_is_money.smod", "last_modified" : "2014-01-18T07:33:28Z" },
+  "rp_workforce" : { "uri" : "https://github.com/Quit/RP-Mods/releases/download/r2701/rp_workforce.smod", "last_modified" : "2014-01-18T07:33:28Z" },
+	"-rp" : { "uri" : "https://github.com/Quit/RP/releases/download/r2701a/-rp.smod", "last_modified" : "2014-01-19T14:36:58Z" },
+	"rp" : { "uri" : "https://github.com/Quit/RP/releases/download/r2701a/rp.smod", "last_modified" : "2014-01-19T08:37:36Z" },
+  "zzz_rp" : { "uri" : "https://github.com/Quit/RP/releases/download/r2701a/zzz_rp.smod", "last_modified" : "2014-01-19T15:05:09Z" }
+}
