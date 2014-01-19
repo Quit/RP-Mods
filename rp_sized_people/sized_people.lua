@@ -60,7 +60,7 @@ end
 
 function MOD:_on_citizen_created(event)
 	-- Check if we have a specific entry for this citizen; in this case we have already dealt with it (prematurely)
-	if self._sizes[event.entity_kind] then
+	if self._sizes[event.entity_id] then
 		return
 	end
 	
