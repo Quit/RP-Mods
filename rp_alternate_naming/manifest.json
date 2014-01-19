@@ -12,7 +12,6 @@
 	
 	"rp" : {
 		"server_init" : "alternate_naming.lua",
-		"conflicts" : "rp_merge_names",
 		"required_version" : 2701
 	},
 	
