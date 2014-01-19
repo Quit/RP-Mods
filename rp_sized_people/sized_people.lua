@@ -1,7 +1,7 @@
 local MOD = class()
 
 -- Format: gender_or_entity_name => { min => min_percent_value, max => max_percent_value }
-MOD.SIZES = 
+local DEFAULT_SIZES = 
 {
 	male = {
 		min = 0.95,
@@ -15,66 +15,59 @@ MOD.SIZES =
 }
 
 function MOD:__init()
-	self.SIZES = rp.load_config(self.SIZES)
-	self:_load_entity_list()
-	radiant.events.listen(radiant.events, 'stonehearth:entity_created', self, self._entity_created)
+	self:_load_config()
+	radiant.events.listen(radiant.events, 'stonehearth:entity_created', self, self._on_entity_created)
+	radiant.events.listen(radiant.events, 'stonehearth:faction_created', self, self._on_faction_created)
 end
 
-function MOD:set_size(entity, entity_id)
-	-- Check if we have a size for this cute little fella
-	local size = self.SIZES[entity_id]
+function MOD:_load_config()
+	local SIZES = rp.load_config(DEFAULT_SIZES)
+	self._sizes = {}
 	
-	-- Validate
-	if size and (not size.min or not size.max) then
-		rp.logf('Invalid size entry for %s: min/max not found', entity_id)
-		size = nil
-	end
-	
-	-- Default to gender
-	if not size then
-		-- Try to guess its gender?
-		if entity_id:find('female') then
-			size = self.SIZES.female
-		elseif entity_id:find('male') then
-			size = self.SIZES.male
+	-- Iterate through them; make sure they're valid
+	for k, v in pairs(SIZES) do
+		if type(v.min) ~= 'number' or type(v.max) ~= 'number' or v.min > v.max then
+			rp.logf('Invalid entry for %q!', k)
+		else
+			self._sizes[k] = v
 		end
 	end
-	
-	if not size or not size.min or not size.max or size.max <= size.min then
-		rp.log('[ERROR] Cannot find proper size for %q (min/max: %s/%s)', entity_id, tostring(size and size.min), tostring(size and size.max))
-		return
-	end
-	
+end
+
+function MOD:set_size(entity, size)
 	-- Determine a random size, we're using 4 digits for that.
 	size = math.random(size.min * 1000, size.max * 1000) / 1000
 
 	-- Determine the current height
 	local render_info = entity:add_component('render_info')
 	
-	-- Apply size; percentual.
+	-- Apply size; percentual. Relative.
 	entity:add_component("render_info"):set_scale(size * render_info:get_scale())
 end
 
-function MOD:_load_entity_list()
-	local entities = {}
-	for mod_name, mod in pairs(rp.available_mods) do
-		-- Has entities?
-		if mod.manifest.radiant and mod.manifest.radiant.entities then
-			for entity_id, entity_uri in pairs(mod.manifest.radiant.entities) do
-				if entity_uri:find('entities/humans/') or self.SIZES[mod_name .. ':' .. entity_id] then
-					entities[mod_name .. ':' .. entity_id] = true
-					rp.logf('Found resizable: "%s:%s"', mod_name, entity_id)
-				end
-			end
-		end
+-- For all explicitly defined entities
+function MOD:_on_entity_created(event)
+	local size = self._sizes[event.entity_id]
+	if size then
+		self:set_size(event.entity, size)
 	end
-	
-	self._entity_list = entities
 end
 
-function MOD:_entity_created(event)
-	if self._entity_list[event.entity_id] then
-		self:set_size(event.entity, event.entity_id)
+-- For all 
+function MOD:_on_faction_created(event)
+	radiant.events.listen(event.object, 'stonehearth:citizen_created', self, self._on_citizen_created)
+end
+
+function MOD:_on_citizen_created(event)
+	-- Check if we have a specific entry for this citizen; in this case we have already dealt with it (prematurely)
+	if self._sizes[event.entity_kind] then
+		return
+	end
+	
+	-- OK, resize us?
+	local size = self._sizes[event.gender]
+	if size then -- In today's modern world, it's not all black and white anymore
+		self:set_size(event.object, size)
 	end
 end
 
