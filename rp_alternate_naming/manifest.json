@@ -13,7 +13,7 @@
 	"rp" : {
 		"server_init" : "alternate_naming.lua",
 		"conflicts" : "rp_merge_names",
-		"required_version" : 2201
+		"required_version" : 2701
 	},
 	
 	"steve_cannon" : "http://quit.github.io/RP-Mods/sc_beta.json"

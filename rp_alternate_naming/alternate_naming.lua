@@ -23,13 +23,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ]=============================================================================]
 
--- Config, config config config!
-local CONFIG = {
-	factions = {} -- factions affected by this little hack
-}
 
-CONFIG = rp.load_config(CONFIG)
-
+--[[ Helper functions ]]--
 -- Returns a random element from a table.
 local function get_random_element(tbl)
 	if not tbl then
@@ -39,7 +34,9 @@ local function get_random_element(tbl)
 end
 
 -- Returns a random name from a list by trying some educated guesses.
-local function get_random_name_from_list(list)
+local function get_random_name_part_from_list(list, gender)
+	list = list[gender] or list._default
+	
 	-- Asser that our list isn't empty.
 	local parts = list.parts or list
 	assert(#parts > 0, "get_random_name_from_list cannot operate on an empty list")
@@ -70,6 +67,7 @@ local function get_random_name_from_list(list)
 				result = result:gsub(replace[1], replace[2])
 			end
 		end
+		
 		-- Return the glued-together list of word parts. That should make a word. Hopefully.
 		return result
 	else
@@ -77,51 +75,73 @@ local function get_random_name_from_list(list)
 		return get_random_element(parts)
 	end
 end
-	
---~ local faction = population:get_faction("civ", "stonehearth:factions:ascendancy")
--- Patches "faction"
-function rp.enable_alternate_name_generator(faction)
-	function faction:generate_random_name(gender)
-		local data = self._data
-		return get_random_name_from_list(data.given_names[gender] or data.given_names._default) .. ' ' .. get_random_name_from_list(data.surnames[gender] or data.surnames._default)
-	end
+
+local function get_random_name_from_list(list, gender)
+	return get_random_name_part_from_list(list.given_names, gender) .. ' ' .. get_random_name_part_from_list(list.surnames, gender)
 end
 
-local population = radiant.mods.load('stonehearth').population
+--[[ Class that deals with "advanced" proposals ]]--
+-- god I wish we were less OOP and more varargish
+local FC = class()
 
--- Now, magic.
-for k, entry in pairs(CONFIG.factions) do
-	-- God I wish I had continue
-	if type(entry) ~= 'table' then
-		rp.log('[ERROR] Only objects are allowed inside CONFIG.factions')
-	else
-		local factionName, kingdom = entry.faction_name, entry.kingdom
-		if not factionName or not kingdom then
-			rp.log('[ERROR] Invalid faction entry')
+function FC:__init(faction, json, priority)
+	self._json, self._priority = json, priority
+	radiant.events.listen(faction, 'stonehearth:propose_citizen_name', self, self._on_propose_citizen_name)
+end
+
+function FC:_on_propose_citizen_name(event)
+	local gender = event.gender
+	
+	table.insert(event.proposals, { name = get_random_name_from_list(self._json, gender), priority = self._priority })
+end
+
+--[[ The mod itself ]]
+local MOD = class()
+
+function MOD:__init()
+	self:_load_config()
+	radiant.events.listen(radiant.events, 'stonehearth:faction_created', self, self._on_faction_created)
+end
+
+function MOD:_load_config()
+	-- Config, config config config!
+	self._factions = {}
+	for _, entry in pairs(rp.load_config({ factions = {}}).factions) do
+		local _, json = pcall(radiant.resources.load_json, entry.kingdom)
+		
+		if type(entry.priority) ~= 'number' or not json or not entry.faction_name then
+			rp.logf('Invalid entry for faction %q: No valid kingdom/priority found', tostring(entry.faction_name))
 		else
-			local success, faction = rp.run_safe(population.get_faction, population, factionName, kingdom)
-			if not success then
-				rp.logf('[ERROR] Cannot find faction %q %q (%s)', tostring(factionName), tostring(kingdom), tostring(faction))
-			else
-				rp.enable_alternate_name_generator(faction)
-				rp.logf('Successfully patched %q %q', tostring(factionName), tostring(kingdom))
-				if tonumber(entry.dump) then
-					local dump = tonumber(entry.dump)
-					local filename = kingdom:gsub('[^A-Za-z]', '_'):gsub('_+', '_') .. ".txt"
-					rp.logf('Dumping %d entries into %q', dump, filename)
-					
-					local f, err = io.open(filename, 'w')
-					if not f then
-						rp.logf('Cannot open %q: %s', filename, tostring(err))
-					else
-						for i = 1, dump do
-							local gender = i % 2 == 0 and 'male' or 'female'
-							f:write(string.format('[% 6s]\t%s\n', gender, faction:generate_random_name(gender)))
-						end
-					end
+			entry.kingdom_json = json
+			self._factions[entry.faction_name] = entry
+			
+			-- Was dump specified?
+			if type(entry.dump) == 'number' and io then
+				-- Dump a few entries I guess.
+				local filename = entry.kingdom:gsub('[^A-Za-z]', '_'):gsub('_+', '_') .. ".txt"
+				rp.logf('Dumping %d entries for %q to %s:', entry.dump, entry.faction_name, filename)
+				
+				local file = io.open(filename, 'w')
+				
+				for i = 1, entry.dump do
+					local gender = (i % 2 == 0) and 'male' or 'female'
+					file:write(string.format('[% 6s]\t%s\n', gender, get_random_name_from_list(entry.kingdom_json, gender)))
 				end
+				
+				file:close()
 			end
 		end
 	end
 end
-return true
+
+function MOD:_on_faction_created(event)
+	-- Do we have this faction in our table?
+	if self._factions[event.faction] then
+		local data = self._factions[event.faction]
+		
+		-- Attach our name generator and keep it attached to the faction
+		event.object._rp_an_name_generator = FC(event.object, data.kingdom_json, data.priority)
+	end
+end
+
+return MOD()

@@ -2,7 +2,8 @@
 	"factions" : [
 		{
 			"faction_name" : "civ",
-			"kingdom" : "rp_alternate_naming:factions:ascendies"
+			"kingdom" : "rp_alternate_naming:factions:ascendies",
+			"priority" : 100
 		}
 	]
 }
