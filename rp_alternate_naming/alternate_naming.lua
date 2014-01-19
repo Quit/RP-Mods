@@ -80,19 +80,10 @@ local function get_random_name_from_list(list, gender)
 	return get_random_name_part_from_list(list.given_names, gender) .. ' ' .. get_random_name_part_from_list(list.surnames, gender)
 end
 
---[[ Class that deals with "advanced" proposals ]]--
--- god I wish we were less OOP and more varargish
-local FC = class()
-
-function FC:__init(faction, json, priority)
-	self._json, self._priority = json, priority
-	radiant.events.listen(faction, 'stonehearth:propose_citizen_name', self, self._on_propose_citizen_name)
-end
-
-function FC:_on_propose_citizen_name(event)
-	local gender = event.gender
-	
-	table.insert(event.proposals, { name = get_random_name_from_list(self._json, gender), priority = self._priority })
+-- Returns a function that we can abuse for hooks.
+-- It's worse than the OOP approach, I suppose, but I like it more. It's not creating useless classes.
+local function get_propose_function(json, priority)
+	return function(faction, event) table.insert(event.proposals, { name = get_random_name_from_list(json, event.gender), priority = priority }) end
 end
 
 --[[ The mod itself ]]
@@ -139,8 +130,8 @@ function MOD:_on_faction_created(event)
 	if self._factions[event.faction] then
 		local data = self._factions[event.faction]
 		
-		-- Attach our name generator and keep it attached to the faction
-		event.object._rp_an_name_generator = FC(event.object, data.kingdom_json, data.priority)
+		-- Listen to the events and provide useful names.
+		radiant.events.listen(event.object, 'stonehearth:propose_citizen_name', event.object, get_propose_function(data.kingdom_json, data.priority))
 	end
 end
 
