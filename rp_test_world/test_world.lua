@@ -1,17 +1,13 @@
--- Enforces the world to be generated as 'test' blueprint.
--- aka "a very small tile".
-local WG = rp.load_stonehearth_service('world_generation.world_generator')
-
 local size = math.max(rp.get_config('size', 1), 1)
 
-rp.logf('Size: %d', size)
+-- Let's talk about world generation.
+local WGS = radiant.mods.load('stonehearth').world_generation
 
-if not WG then
-	error('Could not load WorldGeneration service!')
+local function generator_chosen(_, event)
+	-- TODO: Have some sort of... proper event here?
+	-- But we don't intend on doing anything with this for a while. :(
+	event.generator._create_world_blueprint = function(self) return self:_get_empty_blueprint(size, size) end
 end
 
-function WG:_create_world_blueprint()
-	return self:_get_empty_blueprint(size, size)
-end
-
+radiant.events.listen(WGS, 'stonehearth:world_generator_chosen', WGS, generator_chosen)
 return true
