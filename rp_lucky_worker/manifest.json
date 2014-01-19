@@ -7,7 +7,7 @@
 	"rp" : {
 		"server_init" : "lucky_worker.lua",
 		"requests" : "rp_proxy_factions",
-		"required_version" : 1401
+		"required_version" : 2701
 	},
 	
 	"steve_cannon" : "http://quit.github.io/RP-Mods/sc_beta.json"

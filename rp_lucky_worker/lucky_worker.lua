@@ -1,25 +1,19 @@
-local maleCreated = false
+local MOD = class()
 
--- Copypaste, again, from NewGameHandler with modifications
-local pop_service = radiant.mods.load('stonehearth').population
-local faction = pop_service:get_faction("civ", "stonehearth:factions:ascendancy")
-
-local oldCreateCitizen = faction.create_new_citizen
-
-function faction:create_new_citizen()
-	local gender = 'female'
-	
-	if not maleCreated then
-		maleCreated = true
-		gender = 'male'
-	end
-	
-	local entities = self._data[gender .. "_entities"]
-  local kind = entities[math.random(#entities)]
-  local citizen = radiant.entities.create_entity(kind)
-  citizen:add_component("unit_info"):set_faction(self._faction_name)
-  self:_set_citizen_initial_state(citizen, gender)
-  return citizen
+function MOD:__init()
+	radiant.events.listen(radiant.events, 'stonehearth:faction_created', self, self._on_faction_created)
 end
 
-return true
+-- Completely cheaty: Check.
+local function propose_citizen_gender(faction, event)
+	local gender = not faction._rp_lw_created and 'male' or 'female'
+	faction._rp_lw_created = true
+	table.insert(event.proposals, { priority = 100, gender = gender })
+end
+
+function MOD:_on_faction_created(event)
+	-- Listen to said faction's creation stuff.
+	radiant.events.listen(event.object, 'stonehearth:propose_citizen_gender', event.object, propose_citizen_gender)
+end
+
+return MOD()
