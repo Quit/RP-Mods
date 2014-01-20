@@ -1,0 +1,26 @@
+{
+	"info" : {
+		"name" : "Click and gone",
+		"description" : "Adds a new button that allows to harvest stuff by clicking on it."
+	},
+	
+	"radiant" : {
+		"functions" : {
+			"harvest" : {
+				"controller": "file(cag.lua)",
+				"endpoint" : "server"
+			}
+		}
+	},
+	
+	"ui" : {
+		"js" : [ "file(cag.js)" ]
+	},
+	
+	"rp" : {
+		"required_version" : 2701,
+		"server_init" : "server_cag.lua"
+	},
+	
+	"steve_cannon" : "http://quit.github.io/RP-Mods/sc_beta.json"
+}
