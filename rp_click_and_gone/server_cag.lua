@@ -7,14 +7,13 @@ local OC = class()
 function OC:__init(entity, overlay)
 	self._entity = entity
 	self._effect = radiant.effects.run_effect(entity, overlay)
-	self._respawnable_resource_node = entity:get_component('stonehearth:renewable_resource_node')
-	radiant.events.listen(self._respawnable_resource_node, 'stonehearth:resource_spawned', self, self._on_renewable_resource_spawned)
+	radiant.events.listen(self._entity, 'stonehearth:renewable_resource_spawned', self, self._on_renewable_resource_spawned)
 	self._entity._rp_overlay_checker = self
 end
 
 function OC:_on_renewable_resource_spawned()
 	self._effect:stop()
-	radiant.events.unlisten(self._respawnable_resource_node, 'stonehearth:renewable_resource_spawned', self, self._on_renewable_resource_spawned)
+	radiant.events.unlisten(self._entity, 'stonehearth:renewable_resource_spawned', self, self._on_renewable_resource_spawned)
 	self._entity._rp_overlay_checker = nil
 end
 
