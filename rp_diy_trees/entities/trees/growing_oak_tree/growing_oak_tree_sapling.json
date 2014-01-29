@@ -1,0 +1,30 @@
+{
+	"type": "entity",
+	"components": {
+		"model_variants": [
+			{
+				"models": [
+					{
+						"type": "one_of",
+						"items": [
+							"/stonehearth/entities/trees/oak_tree/small_oak_tree/small_oak_tree.qb",
+							"/stonehearth/entities/trees/oak_tree/small_oak_tree/small_oak_tree_2.qb", 
+							"/stonehearth/entities/trees/oak_tree/small_oak_tree/small_oak_tree_3.qb"
+						]
+					}
+				],
+				
+				"scale" : 0.25
+			}
+		],
+		
+		"stonehearth:placeable_item_proxy" : {
+			"full_sized_entity" : "rp_diy_trees:growing_oak_tree",
+			"unmovable" : true
+		},
+		
+		"item" : {
+			"category" : "wood"
+		}
+	}
+}

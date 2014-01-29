@@ -1,0 +1,29 @@
+{
+	"info" : {
+		"name" : "Do It Yourself Trees",
+		"description" : "Inflatable and machine-washable"
+	},
+	
+	"radiant" : {
+		"entities" : {
+			"growing_oak_tree" : "file(entities/trees/growing_oak_tree)",
+			"growing_oak_tree_sapling" : "file(entities/trees/growing_oak_tree/growing_oak_tree_sapling.json)"
+		},
+		
+		"functions" : {
+			"enable_shooting" : {
+				"controller" : "file(server_callbacks.lua)",
+				"endpoint" : "server"
+			}
+		}
+	},
+	
+	"components" : {
+		"growable" : "file(growable_component.lua)"
+	},
+	
+	"rp" : {
+		"required_version" : 2703,
+		"server_init" : "server_init.lua"
+	}
+}

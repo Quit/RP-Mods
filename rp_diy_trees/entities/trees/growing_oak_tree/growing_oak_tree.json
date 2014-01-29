@@ -1,0 +1,186 @@
+{
+	"type": "entity", 
+	"components": {
+		"model_variants": [
+			{
+				"models" : [ "file(sapling_stage1.qb)" ]
+			},
+			
+			{
+				"variants" : "sapling_2",
+				"models" : [ "file(sapling_stage2.qb)"],
+				"scale" : 2
+			},
+			
+			{
+				"variants" : "sapling_3",
+				"models" : [ "file(sapling_stage3.qb)" ]
+			},
+			
+			{
+				"variants" : "small",
+				"models": [
+					{
+						"type": "one_of",
+						"items": [
+							"/stonehearth/entities/trees/oak_tree/small_oak_tree/small_oak_tree.qb",
+							"/stonehearth/entities/trees/oak_tree/small_oak_tree/small_oak_tree_2.qb", 
+							"/stonehearth/entities/trees/oak_tree/small_oak_tree/small_oak_tree_3.qb"
+						]
+					}
+				]
+			},
+			{
+				"variants" : "medium",
+				"models" : [
+					{
+						"type": "one_of",
+						"items": [
+							"/stonehearth/entities/trees/oak_tree/medium_oak_tree/medium_oak_tree.qb",
+							"/stonehearth/entities/trees/oak_tree/medium_oak_tree/medium_oak_tree_2.qb",
+							"/stonehearth/entities/trees/oak_tree/medium_oak_tree/medium_oak_tree_3.qb"
+						]
+					}
+				]
+			},
+			{
+				"variants" : "medium2",
+				"models" : [
+					{
+						"type": "one_of",
+						"items": [
+							"/stonehearth/entities/trees/oak_tree/medium_oak_tree/medium_oak_tree - Kopie.qb",
+							"/stonehearth/entities/trees/oak_tree/medium_oak_tree/medium_oak_tree_2 - Kopie.qb",
+							"/stonehearth/entities/trees/oak_tree/medium_oak_tree/medium_oak_tree_3 - Kopie.qb"
+						]
+					}
+				]
+			},			
+			{
+				"variants" : "large",
+				"models" : [
+					{
+						"type": "one_of",
+						"items": [
+							"/stonehearth/entities/trees/oak_tree/large_oak_tree/large_oak_tree.qb",
+							"/stonehearth/entities/trees/oak_tree/large_oak_tree/large_oak_tree_2.qb", 
+							"/stonehearth/entities/trees/oak_tree/large_oak_tree/large_oak_tree_3.qb"
+						]
+					}
+				]
+			}
+		], 
+		
+		"render_info" : {
+			"scale" : 0.1
+		},
+		
+		"unit_info": {
+			"name": "Oak Tree Sapling", 
+			"description": "He's a sapling. For real!"
+		},
+		
+		"destination" : {
+			"region" : [
+				{
+					"min" : { "x" : -3, "y" : 0, "z" : -3 },
+					"max" : { "x" :  4, "y" : 1, "z" :  4 }
+				}
+			]
+		},
+		
+				
+		"stonehearth:commands" : {
+			"commands" : [
+				"/stonehearth/data/commands/chop_tree"
+			]
+		},
+	
+		"stonehearth:resource_node": {
+			"resource": "stonehearth:oak_log", 
+			"durability": 0
+		},
+		
+		"rp_diy_trees:growable" : {
+			"stages" : [
+				{
+					"duration" : "1h"
+				},
+				{
+					"model_variant" : "sapling_2",
+					"duration" : "1h",
+					
+					"render_info" : {
+						"scale" : 0.15
+					}
+				},
+				{
+					"model_variant" : "sapling_3",
+					"duration" : "1h",
+					
+					"render_info" : {
+						"scale" : 0.25
+					}
+				},
+				{
+					"duration" : "1h",
+					"model_variant" : "medium",
+					
+					"stonehearth:resource_node" : {
+						"durability" : 3
+					},
+					
+					"unit_info" : {
+						"name" : "Little Tree",
+						"description" : "Probably worth a few logs."
+					},
+					
+					"render_info" : {
+						"scale" : 0.5
+					}
+				},
+				
+				{
+					"duration" : "1h",
+					"model_variant" : "large",
+					
+					"stonehearth:resource_node" : {
+						"durability" : 5
+					},
+					
+					"unit_info" : {
+						"name" : "Medium Tree",
+						"description" : "Probably worth some logs."
+					},
+					
+					"render_info" : {
+						"scale" : 0.75
+					},
+					
+					"on_start" : {
+						"action" : "call",
+						"name" : "rp_diy_trees:enable_shooting",
+						"args" : { "entity" : "{{entity}}" }
+					}
+				},
+				
+				{
+					"stonehearth:resource_node" : {
+						"durability" : 8
+					},
+					
+					"unit_info" : {
+						"name" : "Medium Tree",
+						"description" : "Probably worth some more logs."
+					}
+				}
+			]
+		},
+		
+		"stonehearth:renewable_resource_node" : {
+			"resource" : "rp_diy_trees:sapling",
+			"renewal_time" : "12h",
+			"harvest_command" : "harvest_shoot"
+		}
+	}
+}

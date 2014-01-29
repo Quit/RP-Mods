@@ -1,0 +1,15 @@
+{
+	"type" : "command",
+
+	"name": "harvest_shoot",
+	"enabled_tooltip" : "Harvest shoot",
+	"disabled_tooltip" : "Not ready yet!",
+	"default_enabled" : true,
+	"icon" : "file(harvest_shoot.png)",
+	
+	"action": "call",
+	"function": "stonehearth:harvest_plant",
+	"args": [
+		"{{self}}"
+	]
+}
