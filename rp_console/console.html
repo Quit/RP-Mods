@@ -1,0 +1,19 @@
+<script type="text/x-handlebars" data-template-name="rpConsole">
+	<div id="rpConsoleWindow">
+		<div id='rpConsoleHeader'>
+			<a href="#" {{action switchTarget "All" target="view"}} id="rpConsoleTabAll" class="tab">All</a>
+			<a href="#" {{action switchTarget "LuaS" target="view"}} id="rpConsoleTabLuaS" class="tab">luaS</a>
+			<a href="#" {{action switchTarget "LuaC" target="view"}} id="rpConsoleTabLuaC" class="tab">luaC</a>
+			<a href="#" {{action switchTarget "Js" target="view"}} id="rpConsoleTabJs" class="tab">Js</a>
+			
+			<a href='#' {{action minimize target="view"}} id="rpConsoleMinimizeButton" class="minimize">-</a>
+		</div>
+		<div id='rpConsoleArea'>
+			<textarea id='rpConsoleLinesLuaS' class='lines'></textarea>
+			<textarea id='rpConsoleLinesJs' class='lines'></textarea>
+			<textarea id='rpConsoleLinesAll' class='lines'></textarea>
+			<textarea id='rpConsoleLinesLuaC' class='lines'></textarea>
+			<input type="text" id='rpConsoleInput'>
+		</div>
+	</div>
+</script>
