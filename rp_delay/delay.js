@@ -23,4 +23,4 @@ var Delay = RPMod.extend({
 	
 });
 
-rp.register_mod('rp_delay', Delay);
+rp.registerMod('rp_delay', Delay);

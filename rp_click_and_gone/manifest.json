@@ -18,7 +18,7 @@
 	},
 	
 	"rp" : {
-		"required_version" : 2703,
+		"required_version" : 2705,
 		"server_init" : "server_cag.lua"
 	},
 	

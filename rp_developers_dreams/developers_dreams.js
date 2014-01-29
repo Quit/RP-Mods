@@ -32,4 +32,4 @@ var DD = RPMod.extend({
 	}
 });
 
-rp.register_mod('rp_developers_dreams', DD);
+rp.registerMod('rp_developers_dreams', DD);

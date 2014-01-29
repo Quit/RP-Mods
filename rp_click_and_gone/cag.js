@@ -6,7 +6,7 @@ var MOD = RPMod.extend({
 		var self = this;
 
 		// Add us to the menu
-		rp.add_to_start_menu([
+		rp.addToStartMenu([
 			{
 				name : "Harvest",
 				hotkey : 'h',
@@ -62,4 +62,4 @@ var MOD = RPMod.extend({
 });
 
 
-rp.register_mod('rp_click_and_gone', MOD);
+rp.registerMod('rp_click_and_gone', MOD);

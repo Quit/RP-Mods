@@ -40,4 +40,4 @@ var TIM = RPMod.extend({
 	}
 });
 
-rp.register_mod('rp_time_is_money', TIM);
+rp.registerMod('rp_time_is_money', TIM);

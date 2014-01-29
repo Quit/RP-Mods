@@ -5,5 +5,5 @@
 		"js" : [ "file(delay.js)" ]
 	},
 	
-	"rp" : { "required_version" : 2699 }
+	"rp" : { "required_version" : 2705 }
 }

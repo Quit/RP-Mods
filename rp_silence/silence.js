@@ -4,11 +4,11 @@
 var Silence = RPMod.extend({
 	work : function()
 	{
-		rp.set_call_proxy('radiant:play_music', function() { return {}; });
+		rp.setCallProxy('radiant:play_music', function() { return {}; });
 		
 		this.resolve();
 	}
 });
 
 
-rp.register_mod('rp_silence', Silence);
+rp.registerMod('rp_silence', Silence);
