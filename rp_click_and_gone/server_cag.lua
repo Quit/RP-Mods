@@ -1,7 +1,3 @@
---[[
-	Stuff in here will be moved to RP real soon, but until that is available...
-]]--
-
 local OC = class()
 
 function OC:__init(entity, overlay)
