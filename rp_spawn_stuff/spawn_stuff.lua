@@ -109,7 +109,8 @@ function SpawnStuff:get_start_menu(session, response)
 		toys = true,
 		critters = self.check_critters,
 		ground_clutter = true,
-		crafting_materials = true -- not sure about this one.
+		crafting_materials = true, -- not sure about this one.
+		spawnable = true
 	}
 	
 	local mods = {} -- table, each entry represents a mod
