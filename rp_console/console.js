@@ -2,7 +2,13 @@ var commands = {}; // name => function to call
 
 rp.add_command = function(name, callback)
 {
-	commands[name] = callback;
+	if (!(name instanceof Array))
+	{
+		name = [ name ];
+	}
+	
+	for (var i = 0; i < name.length; ++i)
+		commands[name[i]] = callback;
 }
 
 rp.add_command('js_run', function(name, args, argstr) { eval(argstr); });
@@ -18,7 +24,7 @@ var entity_selected = function(_, data)
 	$(top).off("radiant_selection_changed.rp_console");
 }
 
-rp.add_command('select_entity', function(_, _, _) {
+rp.add_command([ 'select_entity', 'se' ], function(_, _, _) {
 	$(top).on("radiant_selection_changed.rp_console", entity_selected);
 });
 
