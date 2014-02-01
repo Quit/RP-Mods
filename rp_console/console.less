@@ -1,3 +1,15 @@
+.border (@file; @dim) {
+	border-image: url(@file) @dim;
+}
+
+.magic-border (@file; @dim) {
+	border-image: url("@{file}_inactive.png") @dim;
+	
+	#rpConsoleWindow.focused & {
+		border-image: url("@{file}.png") @dim;
+	}
+}
+
 #rpConsoleWindow {
 	position: absolute;
 	top: 200px;
@@ -11,61 +23,63 @@
 	padding-right: 2px;
 	border: solid transparent;
 	border-width: 14px 12px 17px;
-	border-image: url(images/border.png) 14 12 17 repeat;
 	margin-top: -14px;
 	margin-left: -12px;
+	
+	.border("images/border_inactive.png", 14 12 17 repeat);
+	&.focused { .border("images/border.png", 14 12 17 repeat); }
+}
 
-	#rpConsoleHeader {
-		height: 22px;
+#rpConsoleHeader {
+	height: 22px;
+	position: absolute;
+	top: -34px;
+	left: 12px;
+	width: 100%;
+	
+	a {
+		color: white;
+		background-color: #222;
+		height: 20px;
+		display: inline-block;
+		width: 50px;
+		text-align: center;
+		border: solid transparent;
+		border-width: 14px 12px 0px;
+		.magic-border("images/tab_border", 14 12 14 repeat);
+		margin-top: -14px;
+		margin-left: -12px;
+	}
+	
+	.active {
+		background-color: #333;
+		border-bottom-width: 14px;
+	}
+	
+	.minimize {
+		.magic-border("images/minimize_border", 14 12 14 repeat);
+	}
+	
+	.maximize {
+		border-image: url(images/border.png) 14 12 14 repeat;
+		padding-top: 7px;
+		padding-bottom: 9px;
+	}
+	
+	#rpConsoleMinimizeButton {
+		.active;
 		position: absolute;
-		top: -34px;
-		left: 12px;
-		width: 100%;
-		
-		a {
-			color: white;
-			background-color: #222;
-			height: 20px;
-			display: inline-block;
-			width: 50px;
-			text-align: center;
-			border: solid transparent;
-			border-width: 14px 12px 0px;
-			border-image: url(images/tab_border.png) 14 12 14 repeat;
-			margin-top: -14px;
-			margin-left: -12px;
-		}
-		
-		.active {
-			background-color: #333;
-			border-bottom-width: 14px;
-		}
-		
-		.minimize {
-			border-image: url(images/minimize_border.png) 14 12 14 repeat;
-		}
-		
-		.maximize {
-			border-image: url(images/border.png) 14 12 14 repeat;
-			padding-top: 7px;
-			padding-bottom: 9px;
-		}
-		
-		#rpConsoleMinimizeButton {
-			.active;
-			position: absolute;
-			top: 0px;
-			right: 0px;
-		}
+		top: 0px;
+		right: 0px;
 	}
-		
-	#rpConsoleArea {
-		width: 100%;
-		height: 100%;
-		padding: 0;
-		padding-bottom: 18px;
-		box-sizing: border-box;
-	}
+}
+	
+#rpConsoleArea {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	padding-bottom: 18px;
+	box-sizing: border-box;
 
 	.lines {
 		.text;
@@ -79,21 +93,21 @@
 		padding: 0;
 		overflow-x: hidden;
 	}
+}
 
-	.text {
-		font-family: "Courier New", Serif;
-		color: white;
-	}
+.text {
+	font-family: "Courier New", Serif;
+	color: white;
+}
 
-	#rpConsoleInput {
-		.text;
-		width: 100%;
-		height: 32px;
-		position: absolute;
-		background-color: inherit;
-		bottom: 0;
-		box-sizing: border-box;
-		border: none;
-		border-top: 2px solid black;
-	}
+#rpConsoleInput {
+	.text;
+	width: 100%;
+	height: 32px;
+	position: absolute;
+	background-color: inherit;
+	bottom: 0;
+	box-sizing: border-box;
+	border: none;
+	border-top: 2px solid black;
 }

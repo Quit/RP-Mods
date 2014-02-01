@@ -95,15 +95,21 @@ App.RpConsoleView = App.View.extend({
 					self.scrollInput(e.keyCode == 38 ? -1 : 1);
 				}
 			})
+			//~ .focus(function(e)
+			//~ {
+				//~ $('#rpConsoleWindow').addClass('active');
+				//~ rp.log('Active!', $('#rpConsoleWindow').hasClass('active'));
+			//~ })
 		;
 		
+		$(top).on('rp:input_disabled', function (dis) { $('#rpConsoleWindow').toggleClass('focused'); });
 		self.switchTarget('All');
 	},
 	
 	_set_event_stop : function(status)
 	{
 		this._stop_events = status;
-		radiant.call('rp:set_input_disabled', status);
+		rp.setInputDisabled(status);
 	},
 	
 	scrollInput : function(dt)
@@ -273,7 +279,8 @@ App.RpConsoleView = App.View.extend({
 	_addLine : function(target, text)
 	{
 		var lines = $('#rpConsoleLines' + target);
-		lines.append(text, '\n');
+		
+		lines.append(String(text), '\n');
 		this._updateScrollPosition(lines);
 		
 		if (target != 'All')
