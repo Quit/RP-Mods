@@ -1,5 +1,6 @@
 local old_write = io.write
 local CH = require('callbacks')
+local Vec3 = _radiant.csg.Point3f
 
 CH.console_chunks = {}
 CH.commands = {}
@@ -85,6 +86,6 @@ rp.add_entity_concommand({ 'set_pos', 'sp' }, function(name, se, args, argstr)
 		error('invalid coordinates')
 	end
 	
-	se:add_component('mob'):move_to(x, y, z)
+	se:add_component('mob'):move_to(Vec3(x, y, z))
 end)
 return true
