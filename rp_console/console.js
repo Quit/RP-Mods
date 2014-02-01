@@ -171,6 +171,7 @@ App.RpConsoleView = App.View.extend({
 		}
 		else if (this.target == 'All')
 		{
+			this._addLine('All', '>' + blob);
 			this._executeConsoleCommand(blob);
 		}
 	},
