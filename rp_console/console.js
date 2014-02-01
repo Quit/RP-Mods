@@ -280,7 +280,7 @@ App.RpConsoleView = App.View.extend({
 	{
 		var lines = $('#rpConsoleLines' + target);
 		
-		lines.append(String(text), '\n');
+		lines.append(document.createTextNode(text), '\n');
 		this._updateScrollPosition(lines);
 		
 		if (target != 'All')
