@@ -15,7 +15,27 @@
 	"given_names" : {
 		"male" : {
 			"replacements" : [
-				["effe", "eve"]
+				["efphe", "eve"],
+				["elel", "el"],
+				["elo", "o"],
+				["lx", "ls"],
+				["dt", "t"],
+				["dx", "ds"],
+				["aa", "a"],
+				["la[bcefiklmnptvwx]", "l%3"],
+				["nus$", "ngus$"],
+				["xx", "x"],
+				["rx", "rs"],
+				["uo", "uno"],
+				["tt", "t"],
+				["kk", "k"],
+				["bb", "b"],
+				["sx", "ss"],
+				["oo", "o"],
+				["auy", "uy"],
+				["lo[bcikrt]", "l%3"],
+				["bx", "bs"],
+				["ee", "ie"]
 			],
 			
 			"parts" : [
@@ -139,12 +159,11 @@
 					 "bert",
 					 "brand",
 					 "cus",
-					 "ei",
 					 "el",
 					 "eth",
 					 "fan",
-					 "fe",
-					 "ff",
+					 "phe",
+					 "ph",
 					 "go",
 					 "ian",
 					 "ier",
@@ -175,7 +194,8 @@
 					 "wald",
 					 "wulf",
 					 "wyn",
-					 "xim"
+					 "xim",
+					 "y"
 					]
 				}
 			]
