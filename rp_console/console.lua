@@ -32,6 +32,12 @@ function rp.add_concommand(name, callback)
 	end
 end
 
+rp.add_concommand({ 'openscript', 'os' }, function(name, args, argstr)
+	argstr = argstr:gsub('^[/\\.]+', ''):gsub('%..*', '')
+	
+	pcall(dofile, 'lua/' .. argstr .. '.lua')
+end)
+
 -- Adds a new command that validates for selected_entity and receives (name, entity, args, argstr)
 function rp.add_entity_concommand(name, callback)
 	rp.add_concommand(name, function(name, args, argstr)
