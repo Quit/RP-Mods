@@ -13,6 +13,8 @@ rp.add_command = function(name, callback)
 
 rp.add_command('js_run', function(name, args, argstr) { eval(argstr); });
 
+rp.add_command('clear', function(_, _, _) { $('#rpConsoleArea .lines').text(''); });
+
 var entity_selected = function(_, data)
 {
 	if (data.selected_entity == null)
