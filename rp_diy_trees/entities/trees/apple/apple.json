@@ -1,0 +1,21 @@
+{
+   "type": "entity",
+   "components": {
+      "unit_info": {
+         "name": "Apple",
+         "description": "Press (SPACE) to say Apple"
+      },
+			
+			"render_info" : {
+				"scale" : 0.1
+			},
+			
+      "model_variants": [
+         {
+            "models": [
+               "file(apple.qb)"
+            ]
+         }
+      ]
+   }
+}

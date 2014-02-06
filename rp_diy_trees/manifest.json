@@ -7,7 +7,8 @@
 	"radiant" : {
 		"entities" : {
 			"growing_oak_tree" : "file(entities/trees/growing_oak_tree)",
-			"growing_oak_tree_sapling" : "file(entities/trees/growing_oak_tree/growing_oak_tree_sapling.json)"
+			"growing_oak_tree_sapling" : "file(entities/trees/growing_oak_tree/growing_oak_tree_sapling.json)",
+			"apple" : "file(entities/trees/apple)"
 		},
 		
 		"functions" : {
@@ -19,7 +20,8 @@
 	},
 	
 	"components" : {
-		"growable" : "file(growable_component.lua)"
+		"growable" : "file(growable_component.lua)",
+		"renewable_entity_resource_node" : "file(renewable_entity_resource_node.lua)"
 	},
 	
 	"rp" : {
