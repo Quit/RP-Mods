@@ -91,7 +91,7 @@ local MOD = class()
 
 function MOD:__init()
 	self:_load_config()
-	radiant.events.listen(radiant.events, 'stonehearth:faction_created', self, self._on_faction_created)
+	radiant.events.listen(radiant.events, 'rp:faction_created', self, self._on_faction_created)
 end
 
 function MOD:_load_config()
@@ -131,7 +131,7 @@ function MOD:_on_faction_created(event)
 		local data = self._factions[event.faction]
 		
 		-- Listen to the events and provide useful names.
-		radiant.events.listen(event.object, 'stonehearth:propose_citizen_name', event.object, get_propose_function(data.kingdom_json, data.priority))
+		radiant.events.listen(event.object, 'rp:propose_citizen_name', event.object, get_propose_function(data.kingdom_json, data.priority))
 	end
 end
 

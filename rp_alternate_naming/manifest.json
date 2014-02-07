@@ -4,15 +4,13 @@
 		"description" : "Introduces a different name generator that combines names instead of getting them from a fixed list."
 	},
 	
-	"radiant" : {
-		"entities" : {
-			"factions:ascendies" : "file(ascendies.json)"
-		}
+	"aliases" : {
+		"factions:ascendies" : "file(ascendies.json)"
 	},
 	
 	"rp" : {
 		"server_init" : "alternate_naming.lua",
-		"required_version" : 2701
+		"required_version" : 3399
 	},
 	
 	"steve_cannon" : "http://quit.github.io/RP-Mods/sc_beta.json"
