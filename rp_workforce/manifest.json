@@ -4,12 +4,10 @@
 		"description" : "Adds a button to the camp standard that allows spawning in of new workers."
 	},
 	 
-	"radiant" : {
-		"functions" : {
-			"summon_worker" : {
-				"controller": "file(summon_worker_handler.lua)",
-				"endpoint" : "server"
-			}
+	"functions" : {
+		"summon_worker" : {
+			"controller": "file(summon_worker_handler.lua)",
+			"endpoint" : "server"
 		}
 	},
 	

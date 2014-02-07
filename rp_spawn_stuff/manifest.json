@@ -4,22 +4,20 @@
 		"description" : "Adds a new button to the start menu that allows spawning of about everything"
 	},
 	
-	"radiant" : {
-		"functions" : {
-			"spawn_stuff" : {
-				"controller": "file(spawn_stuff.lua)",
-				"endpoint" : "server"
-			},
-			
-			"get_start_menu" : {
-				"controller" : "file(spawn_stuff.lua)",
-				"endpoint" : "server"
-			},
-			
-			"choose_spawn_location" : {
-				"controller" : "file(spawn_stuff.lua)",
-				"endpoint" : "client"
-			}
+	"functions" : {
+		"spawn_stuff" : {
+			"controller": "file(spawn_stuff.lua)",
+			"endpoint" : "server"
+		},
+		
+		"get_start_menu" : {
+			"controller" : "file(spawn_stuff.lua)",
+			"endpoint" : "server"
+		},
+		
+		"choose_spawn_location" : {
+			"controller" : "file(spawn_stuff.lua)",
+			"endpoint" : "client"
 		}
 	},
 	

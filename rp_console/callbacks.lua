@@ -1,5 +1,7 @@
 local Callbacks = class()
 
+Callbacks.console_chunks = {}
+
 function Callbacks:eval_server(session, response, lua)
 	local func, err = loadstring(lua)
 	if not func then

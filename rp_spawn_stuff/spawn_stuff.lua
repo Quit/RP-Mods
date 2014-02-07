@@ -118,15 +118,16 @@ function SpawnStuff:get_start_menu(session, response)
 	
 	-- Foreach mod...
 	for modName, mod in pairs(rp.available_mods) do
+		printf('%s is available', modName)
 		local manifest = mod.manifest
 		
 		-- Check if there are even entities
-		if manifest.radiant and manifest.radiant.entities then
+		if manifest.aliases then
 			local modMenu = { name = manifest.info and manifest.info.name or modName, elements = {}, hotkey = self:get_hotkey(#mods), icon = manifest.info and manifest.info.icon }
 			local entFolders = {}
 			
 			-- Foreach entity
-			for entity_name, entity_uri in pairs(manifest.radiant.entities) do
+			for entity_name, entity_uri in pairs(manifest.aliases) do
 				-- Get the folder.
 				local entFolder = entity_uri:match('entities/(.-)/')
 				-- We're not a proxy *and* we have a folder: ding ding.

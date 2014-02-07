@@ -14,37 +14,35 @@
 		"less" : [ "file(console.less)" ]
 	},
 	
-	"radiant" : {
-		"functions" : {
-			"eval_server" : {
-				"controller" : "file(callbacks.lua)",
-				"endpoint" : "server"
-			},
-			
-			"eval_client" : {
-				"controller" : "file(callbacks.lua)",
-				"endpoint" : "client"
-			},
-			
-			"get_server_logs" : {
-				"controller" : "file(callbacks.lua)",
-				"endpoint" : "server"
-			},
+	"functions" : {
+		"eval_server" : {
+			"controller" : "file(callbacks.lua)",
+			"endpoint" : "server"
+		},
+		
+		"eval_client" : {
+			"controller" : "file(callbacks.lua)",
+			"endpoint" : "client"
+		},
+		
+		"get_server_logs" : {
+			"controller" : "file(callbacks.lua)",
+			"endpoint" : "server"
+		},
 
-			"get_client_logs" : {
-				"controller" : "file(callbacks.lua)",
-				"endpoint" : "client"
-			},
-			
-			"execute_server_concommand" : {
-				"controller" : "file(callbacks.lua)",
-				"endpoint" : "server"
-			},
-			
-			"selected_entity" : {
-				"controller" : "file(callbacks.lua)",
-				"endpoint" : "server"
-			}
+		"get_client_logs" : {
+			"controller" : "file(callbacks.lua)",
+			"endpoint" : "client"
+		},
+		
+		"execute_server_concommand" : {
+			"controller" : "file(callbacks.lua)",
+			"endpoint" : "server"
+		},
+		
+		"selected_entity" : {
+			"controller" : "file(callbacks.lua)",
+			"endpoint" : "server"
 		}
 	},
 	

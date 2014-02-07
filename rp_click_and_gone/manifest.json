@@ -4,12 +4,10 @@
 		"description" : "Adds a new button that allows to harvest stuff by clicking on it."
 	},
 	
-	"radiant" : {
-		"functions" : {
-			"harvest" : {
-				"controller": "file(cag.lua)",
-				"endpoint" : "server"
-			}
+	"functions" : {
+		"harvest" : {
+			"controller": "file(cag.lua)",
+			"endpoint" : "server"
 		}
 	},
 	
