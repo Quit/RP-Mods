@@ -4,18 +4,16 @@
 		"description" : "Inflatable and machine-washable"
 	},
 	
-	"radiant" : {
-		"entities" : {
-			"growing_oak_tree" : "file(entities/trees/growing_oak_tree)",
-			"growing_oak_tree_sapling" : "file(entities/trees/growing_oak_tree/growing_oak_tree_sapling.json)",
-			"apple" : "file(entities/trees/apple)"
-		},
+	"aliases" : {
+		"growing_oak_tree" : "file(entities/trees/growing_oak_tree)",
+		"growing_oak_tree_sapling" : "file(entities/trees/growing_oak_tree/growing_oak_tree_sapling.json)",
+		"apple" : "file(entities/trees/apple)"
+	},
 		
-		"functions" : {
-			"enable_shooting" : {
-				"controller" : "file(server_callbacks.lua)",
-				"endpoint" : "server"
-			}
+	"functions" : {
+		"enable_shooting" : {
+			"controller" : "file(server_callbacks.lua)",
+			"endpoint" : "server"
 		}
 	},
 	
@@ -25,7 +23,7 @@
 	},
 	
 	"rp" : {
-		"required_version" : 2703,
+		"required_version" : 3399,
 		"server_init" : "server_init.lua"
 	}
 }
