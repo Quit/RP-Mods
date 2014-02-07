@@ -6,7 +6,7 @@
 	
 	"rp" : {
 		"server_init" : "developers_dreams.lua",
-		"required_version" : 2705
+		"required_version" : 3399
 	},
 	
 	"ui" : {
