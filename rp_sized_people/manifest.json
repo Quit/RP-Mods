@@ -6,7 +6,7 @@
 	
 	"rp" : {
 		"server_init" : "sized_people.lua",
-		"required_version" : 2301
+		"required_version" : 3399
 	},
 	
 	"steve_cannon" : "http://quit.github.io/RP-Mods/sc_beta.json"

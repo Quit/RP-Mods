@@ -16,8 +16,8 @@ local DEFAULT_SIZES =
 
 function MOD:__init()
 	self:_load_config()
-	radiant.events.listen(radiant.events, 'stonehearth:entity_created', self, self._on_entity_created)
-	radiant.events.listen(radiant.events, 'stonehearth:faction_created', self, self._on_faction_created)
+	radiant.events.listen(radiant.events, 'rp:entity_created', self, self._on_entity_created)
+	radiant.events.listen(radiant.events, 'rp:faction_created', self, self._on_faction_created)
 end
 
 function MOD:_load_config()
