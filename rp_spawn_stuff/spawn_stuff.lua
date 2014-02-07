@@ -118,7 +118,6 @@ function SpawnStuff:get_start_menu(session, response)
 	
 	-- Foreach mod...
 	for modName, mod in pairs(rp.available_mods) do
-		printf('%s is available', modName)
 		local manifest = mod.manifest
 		
 		-- Check if there are even entities
