@@ -1,7 +1,7 @@
 local MOD = class()
 
 function MOD:__init()
-	radiant.events.listen(radiant.events, 'stonehearth:entity_created', self, self._on_entity_created)
+	radiant.events.listen(radiant.events, 'rp:entity_created', self, self._on_entity_created)
 end
 
 function MOD:_on_entity_created(event)

@@ -8,5 +8,5 @@ function MOD:_entity_created(event)
 end
 
 
-radiant.events.listen(radiant.events, 'stonehearth:entity_created', MOD, MOD._entity_created)
+radiant.events.listen(radiant.events, 'rp:entity_created', MOD, MOD._entity_created)
 return MOD
