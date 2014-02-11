@@ -22,6 +22,12 @@
 		"renewable_entity_resource_node" : "file(renewable_entity_resource_node.lua)"
 	},
 	
+	"mixintos" : {
+		"stonehearth:small_oak_tree" : "file(tree_mixin.json)",
+		"stonehearth:medium_oak_tree" : "file(tree_mixin.json)",
+		"stonehearth:large_oak_tree" : "file(tree_mixin.json)"
+	},
+	
 	"rp" : {
 		"required_version" : 3399,
 		"server_init" : "server_init.lua"
