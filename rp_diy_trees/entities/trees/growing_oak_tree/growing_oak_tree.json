@@ -92,7 +92,8 @@
 				
 		"stonehearth:commands" : {
 			"commands" : [
-				"/stonehearth/data/commands/chop_tree"
+				"/stonehearth/data/commands/chop_tree",
+				"file(/harvest_shoot)"
 			]
 		},
 	
