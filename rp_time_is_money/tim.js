@@ -8,7 +8,7 @@ var TIM = RPMod.extend({
 					var self = this;
 					self._super();
 					// as soon as it comes up, it's gone already. Magic!
-					self.triggerAction({ action : 'newGame', target: self });
+					self.triggerAction({ action : 'quickStart', target: self });
 				}
 		});
 		
