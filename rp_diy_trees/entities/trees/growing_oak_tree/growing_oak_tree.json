@@ -179,7 +179,7 @@
 		},
 		
 		"stonehearth:renewable_resource_node" : {
-			"resource" : "rp_diy_trees:sapling",
+			"resource" : "rp_diy_trees:growing_oak_tree_sapling",
 			"renewal_time" : "12h",
 			"harvest_command" : "harvest_shoot"
 		}
