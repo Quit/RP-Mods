@@ -87,7 +87,7 @@ end
 
 -- Criteria: Extends *placed_properties
 function SpawnStuff:check_construction(entity_name, entity_uri, json)
-	return json and json.extends and json.extends:find('placed_properties$')
+	return json and json.mixins and json.mixins:find('placed_properties$')
 end
 
 --[[ End of helper function stuff, start of the real callback things. ]]--
