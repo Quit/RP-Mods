@@ -1,24 +1,23 @@
 {
 	"type": "entity", 
 	"components": {
-		"model_variants": [
+		"model_variants": {
+			"default" :
 			{
 				"models" : [ "file(sapling_stage1.qb)" ]
 			},
 			
-			{
-				"variants" : "sapling_2",
+			"sapling_2" : {
 				"models" : [ "file(sapling_stage2.qb)"],
 				"scale" : 2
 			},
 			
-			{
-				"variants" : "sapling_3",
+			"sapling_3" : {
 				"models" : [ "file(sapling_stage3.qb)" ]
 			},
 			
+			"small" :
 			{
-				"variants" : "small",
 				"models": [
 					{
 						"type": "one_of",
@@ -30,8 +29,9 @@
 					}
 				]
 			},
+			
+			"medium" : 
 			{
-				"variants" : "medium",
 				"models" : [
 					{
 						"type": "one_of",
@@ -43,21 +43,9 @@
 					}
 				]
 			},
+	
+			"large" : 
 			{
-				"variants" : "medium2",
-				"models" : [
-					{
-						"type": "one_of",
-						"items": [
-							"/stonehearth/entities/trees/oak_tree/medium_oak_tree/medium_oak_tree - Kopie.qb",
-							"/stonehearth/entities/trees/oak_tree/medium_oak_tree/medium_oak_tree_2 - Kopie.qb",
-							"/stonehearth/entities/trees/oak_tree/medium_oak_tree/medium_oak_tree_3 - Kopie.qb"
-						]
-					}
-				]
-			},			
-			{
-				"variants" : "large",
 				"models" : [
 					{
 						"type": "one_of",
@@ -69,7 +57,7 @@
 					}
 				]
 			}
-		], 
+		}, 
 		
 		"render_info" : {
 			"scale" : 0.1
