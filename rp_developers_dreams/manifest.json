@@ -13,5 +13,12 @@
 		"js" : [ "file(developers_dreams.js)" ]
 	},
 	
+	"functions" : {
+		"setup_camera" : {
+			"controller" : "file(functions_client.lua)",
+			"endpoint" : "client"
+		}
+	},
+	
 	"steve_cannon" : "http://quit.github.io/RP-Mods/sc_beta.json"
-}
+} 

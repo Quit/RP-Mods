@@ -23,7 +23,8 @@ var DD = RPMod.extend({
 			
 			_rp_createCamp : function() { 
 				var self = this;
-				radiant.call('stonehearth:create_camp', { x: -3, y: 16, z: 7 }).done(function() { /*self._rp_createStockpile(); */});
+				radiant.call('stonehearth:create_camp', { x: -3, y: 16, z: 7 }).done(function() { self._rp_createStockpile(); });
+				radiant.call('rp_developers_dreams:setup_camera');
 			},
 				
 			_rp_createStockpile : function() {
