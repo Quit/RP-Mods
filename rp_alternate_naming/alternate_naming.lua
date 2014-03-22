@@ -80,10 +80,15 @@ local function get_random_name_from_list(list, gender)
 	return get_random_name_part_from_list(list.given_names, gender) .. ' ' .. get_random_name_part_from_list(list.surnames, gender)
 end
 
+-- Due to the recent weak reference changes, we have to keep a reference...
+local proposed_functions = {}
+
 -- Returns a function that we can abuse for hooks.
 -- It's worse than the OOP approach, I suppose, but I like it more. It's not creating useless classes.
 local function get_propose_function(json, priority)
-	return function(faction, event) table.insert(event.proposals, { name = get_random_name_from_list(json, event.gender), priority = priority }) end
+	local func = function(faction, event) table.insert(event.proposals, { name = get_random_name_from_list(json, event.gender), priority = priority }) end
+	table.insert(proposed_functions, func)
+	return func
 end
 
 --[[ The mod itself ]]
