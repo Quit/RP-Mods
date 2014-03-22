@@ -10,17 +10,20 @@ var DD = RPMod.extend({
 					this._progressbar.progressbar( "option", "value", result.progress );
 
 					if (result.progress == 100) {
-						App.gotoGame();
-						//~ App.gameView.addView(App.StonehearthCreateCampView);
-						App.gameView._addViews(App.gameView.views.complete);
-						self._rp_createCamp();
+						radiant.call('stonehearth:embark_client')
+							.done(function(o) {
+								App.gotoGame();
+                App.gameView._addViews(App.gameView.views.complete);
+								self._rp_createCamp();
+                self.destroy();
+						 });
 					}
 				}
 			},
 			
 			_rp_createCamp : function() { 
 				var self = this;
-				radiant.call('stonehearth:create_camp', { x: -3, y: 16, z: 7 }).done(function() { self._rp_createStockpile(); });
+				radiant.call('stonehearth:create_camp', { x: -3, y: 16, z: 7 }).done(function() { /*self._rp_createStockpile(); */});
 			},
 				
 			_rp_createStockpile : function() {
