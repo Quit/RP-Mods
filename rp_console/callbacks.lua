@@ -38,10 +38,18 @@ end
 function Callbacks:execute_server_concommand(session, response, command, args, arg_str)
 	if Callbacks.commands[command] then
 		Callbacks.commands[command](command, args, arg_str)
-		return true
+		return { result = true }
 	else
-		rp.logf('Command %q not found', command)
-		return false
+		return { result = false }
+	end
+end
+
+function Callbacks:execute_client_concommand(session, response, command, args, arg_str)
+	if Callbacks.commands[command] then
+		Callbacks.commands[command](command, args, arg_str)
+		return { result = true }
+	else
+		return { result = false }
 	end
 end
 

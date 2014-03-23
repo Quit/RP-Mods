@@ -40,6 +40,11 @@
 			"endpoint" : "server"
 		},
 		
+		"execute_client_concommand" : {
+			"controller" : "file(callbacks.lua)",
+			"endpoint" : "client"
+		},
+		
 		"selected_entity" : {
 			"controller" : "file(callbacks.lua)",
 			"endpoint" : "server"

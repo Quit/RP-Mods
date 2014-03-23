@@ -270,12 +270,24 @@ App.RpConsoleView = App.View.extend({
 		for (var i = 0; i < args.length; ++i)
 			args[i] = args[i].replace(/""/g, '"');
 		
+		var self = this;
+		
 		if (commands[command])
 		{
 			commands[command](command, args, argStr);
 		}
 		else
-			radiant.call('rp_console:execute_server_concommand', command, args, argStr);
+			radiant.call('rp_console:execute_server_concommand', command, args, argStr).done(function(o)
+			{
+				if (!o.result)
+				{
+					radiant.call('rp_console:execute_client_concommand', command, args, argStr).done(function(o)
+					{
+						if (!o.result)
+							self._addLine('All', 'Command not found');
+					});
+				}
+			});
 	},
 	
 	_addLine : function(target, text)
