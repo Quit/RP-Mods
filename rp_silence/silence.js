@@ -4,7 +4,13 @@
 var Silence = RPMod.extend({
 	work : function()
 	{
-		rp.setCallProxy('radiant:play_music', function() { return {}; });
+		rp.setCallProxy('radiant:play_music', function(data) 
+			{
+				if (data.track.match(/^stonehearth:/))
+					return {}; 
+				return radiant.native_call('radiant:play_music', data);
+			}
+		);
 		
 		this.resolve();
 	}
