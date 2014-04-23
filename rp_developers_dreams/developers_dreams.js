@@ -28,7 +28,7 @@ var DD = RPMod.extend({
 			},
 				
 			_rp_createStockpile : function() {
-				radiant.call('stonehearth:create_stockpile', { x: 2, y: 16, z: 6 }, [ 5, 5 ]);
+				radiant.call('rp_developers_dreams:create_stockpile', 2, 16, 6, 5, 5);
 			}
 		});
 		

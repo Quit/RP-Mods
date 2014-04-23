@@ -6,7 +6,7 @@
 	
 	"rp" : {
 		"server_init" : "developers_dreams.lua",
-		"required_version" : 4099
+		"required_version" : 7999
 	},
 	
 	"ui" : {
@@ -15,8 +15,13 @@
 	
 	"functions" : {
 		"setup_camera" : {
-			"controller" : "file(functions_client.lua)",
+			"controller" : "file(callbacks.lua)",
 			"endpoint" : "client"
+		},
+		
+		"create_stockpile" : {
+			"controller" : "file(callbacks.lua)",
+			"endpoint" : "server"
 		}
 	},
 	
